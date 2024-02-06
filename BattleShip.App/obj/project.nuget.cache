@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NwcIEhzRLnn3bMJRDZG1x0BWD1ps/x3u8fvo/+DV0PF1SmaGTiudXaFDcpb7jepnJmJrh7o2mvTa/XpW+nuvyA==",
+  "dgSpecHash": "t+Ch8wukgMKYgtT11KTLYCOGhwjZD1ZJEUww+UypRf5ad9IUv6NoFm1w8QI/Bjxw0d/iyalUIaAYYY+LgA5AIA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\API\\BattleShip.App\\BattleShip.App.csproj",
+  "projectFilePath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.App\\BattleShip.App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Gab\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.1\\microsoft.aspnetcore.authorization.8.0.1.nupkg.sha512",
     "C:\\Users\\Gab\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.1\\microsoft.aspnetcore.components.8.0.1.nupkg.sha512",

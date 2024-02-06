@@ -2062,11 +2062,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\API\\BattleShip.App\\BattleShip.App.csproj",
+      "projectUniqueName": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.App\\BattleShip.App.csproj",
       "projectName": "BattleShip.App",
-      "projectPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\API\\BattleShip.App\\BattleShip.App.csproj",
+      "projectPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.App\\BattleShip.App.csproj",
       "packagesPath": "C:\\Users\\Gab\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\API\\BattleShip.App\\obj\\",
+      "outputPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.App\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Gab\\AppData\\Roaming\\NuGet\\NuGet.Config"
