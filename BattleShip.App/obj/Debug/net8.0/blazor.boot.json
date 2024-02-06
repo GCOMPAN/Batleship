@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BattleShip.App",
   "resources": {
-    "hash": "sha256-xoKUifSTBTdCRb+fK8r5pY5k/rce6x3rbClLsO1wUrY=",
+    "hash": "sha256-1dSixTvkOj5atFEiybcacv15YrcovgNjQHBdTfwKU7o=",
     "jsModuleNative": {
       "dotnet.native.8.0.1.um4bdmxmmr.js": "sha256-SGOlISx+3G4kkvpC9Uq3qoPGsnjxGmW61QBev0lyI5U="
     },
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-EpWTfh4m/hEcXRFYMCR9YeYHwdUJgcm1laBaxWfq2S4=",
       "netstandard.wasm": "sha256-2kH24/YfHmU3B4eYRyRmiwebYROM4+B9eDWKvMnUdP8=",
       "System.Private.CoreLib.wasm": "sha256-CsySKiP7HYY1pS8LTDE60EkqiX5oHb3WoEZHDNd1yK0=",
-      "BattleShip.App.wasm": "sha256-eCMhGhhgI4k7E7gzeWzFGyAYSubGQsv8QIAbvT6oC1s="
+      "BattleShip.App.wasm": "sha256-awLw2umPBpw+HhmaP/xNtEX50P+1KTFltYq9nfb0U+0="
     },
     "pdb": {
-      "BattleShip.App.pdb": "sha256-Z+e0uiqcZGrwDldOGjfdqM3NO6HE4Aa6VCo6k0Lr8lQ="
+      "BattleShip.App.pdb": "sha256-BpMKUkgcd7LlXIM6LCTb2o3QixKDlkdUSeUYjglLDh8="
     }
   },
   "cacheBootResources": true,
