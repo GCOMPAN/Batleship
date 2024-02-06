@@ -27,14 +27,33 @@ public class GridService
         }
         return true;
     }
+
+    public void SetBoatOnGrid(Boat boat)
+    {
+        var incX = boat.Facing == "E";
+        for (int i = 0; i < boat.Size; i++)
+        {
+            if (incX)
+            {
+                this.Grid[boat.XPos + i, boat.YPos] = boat.Name;
+            }
+            else
+            {
+                this.Grid[boat.XPos, boat.YPos + i] = boat.Name;
+            }
+        }
+    }
     public Boat[] GenerateBoatsPos()
     {
-        var a = new Boat("A", 1);
-        var b = new Boat("B", 2);
-        var c = new Boat("C", 3);
-        var d = new Boat("D", 4);
+        var a = new Boat('A', 1);
+        var b = new Boat('B', 2);
+        var c = new Boat('C', 3);
+        var d = new Boat('D', 4);
+        var e = new Boat('E', 4);
+        var f = new Boat('F', 4);
+        var g = new Boat('G', 4);
         
-        Boat[] boatList = [a, b, c, d];
+        Boat[] boatList = [a, b, c, d, e, f, g];
 
         var random = new Random();
         foreach (var boat in boatList)
@@ -49,6 +68,7 @@ public class GridService
             boat.XPos = rdmXPos;
             int rdmYPos = random.Next(maxY);
             boat.YPos = rdmYPos;
+            
             while (!IsBoatFittingInGrid(boat))
             {
                 rdmXPos = random.Next(maxX);
@@ -56,7 +76,7 @@ public class GridService
                 rdmYPos = random.Next(maxY);
                 boat.YPos = rdmYPos;
             }
-            
+            SetBoatOnGrid(boat);
         }
         return boatList;
     }
