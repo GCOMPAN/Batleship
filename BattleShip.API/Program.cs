@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // En savoir plus sur la configuration de Swagger/OpenAPI à https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<GridService>();
 
 var app = builder.Build();
 
@@ -19,9 +20,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/", () =>
+app.MapGet("/", (GridService gridService) =>
 {   
-    var gridService = new GridService();
     return gridService.GenerateBoatsPos();
 })
 
