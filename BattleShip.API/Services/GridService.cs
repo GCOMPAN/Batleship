@@ -4,7 +4,7 @@ namespace BattleShip.API.Services;
 
 public class GridService
 {
-    public char[,] generateGrid()
+    public Boat[] GenerateBoatsPos()
     {
         char[,] grid = new char[10, 10];
         
@@ -15,13 +15,20 @@ public class GridService
         
         Boat[] boatList = [a, b, c, d];
 
+        var random = new Random();
         foreach (var boat in boatList)
         {
-            Console.WriteLine(boat.Name);
-        }
+            var value = random.Next(2);
+            boat.Facing = value == 0 ? "S" : "E";
 
-        
-        
-        return grid;
+            int maxX = boat.Facing == "S" ? 10 : 10 - boat.Size;
+            int maxY = boat.Facing == "E" ? 10 : 10 - boat.Size;
+
+            int rdmXPos = random.Next(maxX);
+            boat.XPos = rdmXPos;
+            int rdmYPos = random.Next(maxY);
+            boat.YPos = rdmYPos;
+        }
+        return boatList;
     }
 }
