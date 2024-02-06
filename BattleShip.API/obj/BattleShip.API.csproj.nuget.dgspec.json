@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\BattleShip.API.csproj": {}
+    "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.API\\BattleShip.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\BattleShip.API.csproj": {
+    "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.API\\BattleShip.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
+        "projectUniqueName": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
         "projectName": "BattleShip.API",
-        "projectPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
-        "packagesPath": "C:\\Users\\Gab\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\obj\\",
+        "projectPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
+        "packagesPath": "C:\\Users\\NDHZ8697\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gab\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\NDHZ8697\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -25,7 +25,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
+                "projectPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -62,6 +66,59 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
+        "projectName": "Battleship.Models",
+        "projectPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
+        "packagesPath": "C:\\Users\\NDHZ8697\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\NDHZ8697\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
