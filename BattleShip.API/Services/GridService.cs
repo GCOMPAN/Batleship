@@ -40,7 +40,7 @@ public class GridService
         foreach (var boat in boatList)
         {
             var value = random.Next(2);
-            boat.Facing = value == 0 ? "S" : "E";
+            boat.Facing = value == 0 ? "S" : "E";   //S = Sud and E = East
 
             int maxX = boat.Facing == "S" ? 10 : 10 - boat.Size;
             int maxY = boat.Facing == "E" ? 10 : 10 - boat.Size;
