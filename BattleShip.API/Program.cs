@@ -20,6 +20,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(c=>{c.AllowAnyMethod();c.AllowAnyHeader();c.AllowAnyOrigin();});
 
 app.MapGet("/StartGameAI", (GridService gridService) =>
 {
