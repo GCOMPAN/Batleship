@@ -13,7 +13,7 @@
         for (int col = 0; col < 10; col++)
         {
             var isOccupied = IsCellOccupied(model.BoatList, row, col);
-            <div class="grid-cell-player @GetOccupiedCssClass(isOccupied)" @onclick="() => HandleCellClick('Player', row, col)"></div>
+            <div class="grid-cell-player @GetOccupiedCssClass(isOccupied)" @onclick="() => HandleCellClick(row, col)"></div>
         }
     }
 </div>
@@ -23,7 +23,7 @@
     {
         for (int col = 0; col < 10; col++)
         {
-            <div class="grid-cell-ia" @onclick="() => HandleCellClick('IA', row, col)"></div>
+            <div class="grid-cell-ia" @onclick="() => HandleCellClick(row, col)"></div>
         }
     }
 </div>
@@ -42,9 +42,9 @@
         }
     }
 
-    private void HandleCellClick(char grid, int row, int col)
+    private void HandleCellClick(int row, int col)
     {
-        Console.WriteLine($"Clicked on {grid} grid at row: {row}, col: {col}");
+        Console.WriteLine($"Clicked at row: {row}, col: {col}");
     }
 
         private bool IsCellOccupied(Boat[] boats, int row, int col)
