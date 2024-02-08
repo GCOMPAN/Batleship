@@ -1,55 +1,47 @@
 @page "/PlayervsIA"
+@using Battleship.Models
+@inject HttpClient HttpClient
 
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/grid.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BattleShip Game</title>
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/grid.css">
-</head>
+<a href="/" class="back-btn">Menu</a>
 
-<body>
-    <a href="/" class="back-btn">Menu</a>
-    <div class="grid-container-player" id="playerGrid">
-        @for (int row = 0; row < 10; row++)
+<div class="grid-container-player" id="playerGrid">
+    @for (int row = 0; row < 10; row++)
+    {
+        for (int col = 0; col < 10; col++)
         {
-            for (int col = 0; col < 10; col++)
-            {
-                <div class="grid-cell-player" onclick="handleCellClick('player', @row, @col)"></div>
-            }
+            <div class="grid-cell-player" @onclick="() => HandleCellClick("player", row, col)"></div>
         }
-    </div>
+    }
+</div>
 
-    <div class="grid-container-ia" id="iaGrid" onclick="handleIAGridClick(event)">
-        @for (int row = 0; row < 10; row++)
+<div class="grid-container-ia" id="iaGrid">
+    @for (int row = 0; row < 10; row++)
+    {
+        for (int col = 0; col < 10; col++)
         {
-            for (int col = 0; col < 10; col++)
-            {
-                <div class="grid-cell-ia" data-row="@row" data-col="@col"></div>
-            }
+            <div class="grid-cell-ia" @onclick="() => HandleCellClick("ia", row, col)"></div>
         }
-    </div>
+    }
+</div>
 
-    <script>
-        function handleCellClick(grid, row, col) {
-            console.log(`Clicked on ${grid} grid at row: ${row}, col: ${col}`);
+@code{
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await HttpClient.GetAsync("http://localhost:5282/StartGameAI");
+        var model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
+        if (model != null)
+        {
+            var gameId = model.GameId;
+            var playerId = model.PlayerId;
+            var boatList = model.BoatList;
         }
+    }
 
-        function handleIAGridClick(event) {
-            const iaGrid = document.getElementById('iaGrid');
-            const rect = iaGrid.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-
-            const cellSize = rect.width / 10;
-            const clickedRow = Math.floor(y / cellSize);
-            const clickedCol = Math.floor(x / cellSize);
-
-            console.log(`Clicked on IA grid at row: ${clickedRow}, col: ${clickedCol}`);
-        }
-    </script>
-</body>
-</html>
+    private void HandleCellClick(string grid, int row, int col)
+    {
+        Console.WriteLine($"Clicked on {grid} grid at row: {row}, col: {col}");
+    }
+}

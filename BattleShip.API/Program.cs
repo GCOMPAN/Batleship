@@ -20,8 +20,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(c=>{c.AllowAnyMethod();c.AllowAnyHeader();c.AllowAnyOrigin();});
 
-app.MapGet("/", (GridService gridService) =>
+app.MapGet("/StartGameAI", (GridService gridService) =>
 {
     Console.WriteLine("Setuping game");
     return gridService.SetupGameIA();
@@ -32,6 +33,5 @@ app.MapPost("/shoot", (GridService gridService, Position position)   =>
         Console.WriteLine("Shooting");
         return gridService.Shoot(position);
     });
-
 
 app.Run();
