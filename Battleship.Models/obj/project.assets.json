@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Gab\\.nuget\\packages\\": {}
+    "C:\\Users\\NDHZ8697\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
+      "projectUniqueName": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
       "projectName": "Battleship.Models",
-      "projectPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
-      "packagesPath": "C:\\Users\\Gab\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\obj\\",
+      "projectPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
+      "packagesPath": "C:\\Users\\NDHZ8697\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Gab\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\NDHZ8697\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
