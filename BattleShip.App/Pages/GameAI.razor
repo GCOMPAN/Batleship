@@ -8,12 +8,14 @@
 <a href="/" class="back-btn">Menu</a>
 
 <div class="grid-container-player" id="playerGrid">
-    @for (int row = 0; row < 10; row++)
-    {
-        for (int col = 0; col < 10; col++)
+    @if(model!=null){
+        @for (int row = 0; row < 10; row++)
         {
-            var isOccupied = IsCellOccupied(model.BoatList, row, col);
-            <div class="grid-cell-player @GetOccupiedCssClass(isOccupied)" @onclick="() => HandleCellClick(row, col)"></div>
+            for (int col = 0; col < 10; col++)
+            {
+                var isOccupied = IsCellOccupied(model.BoatList, row, col);
+                <div class="grid-cell-player @GetOccupiedCssClass(isOccupied)" @onclick="() => HandleCellClick(row, col)"></div>
+            }
         }
     }
 </div>
@@ -29,17 +31,12 @@
 </div>
 
 @code{
-     private StartGameAIResponse model;
+    private StartGameAIResponse model;
+
     protected override async Task OnInitializedAsync()
     {
         var response = await HttpClient.GetAsync("http://localhost:5282/StartGameAI");
-        var model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
-        if (model != null)
-        {
-            var gameId = model.GameId;
-            var playerId = model.PlayerId;
-            var boatList = model.BoatList;
-        }
+        model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
     }
 
     private void HandleCellClick(int row, int col)
@@ -47,7 +44,7 @@
         Console.WriteLine($"Clicked at row: {row}, col: {col}");
     }
 
-        private bool IsCellOccupied(Boat[] boats, int row, int col)
+    private bool IsCellOccupied(Boat[] boats, int row, int col)
     {
         return boats.Any(boat => boat.Position.X <= col && col < boat.Position.X  + boat.Size && boat.Position.Y <= row && row < boat.Position.Y + 1);
     }
