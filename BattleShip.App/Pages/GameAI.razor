@@ -12,14 +12,16 @@
 <div class="grid-container-player" id="playerGrid">
     @if (model != null)
     {
-        @for (int row = 0; row < 10; row++)
+        @for (int col = 0; col < 10; col++)
         {
-            for (int col = 0; col < 10; col++)
+            for (int row = 0; row < 10; row++)
             {
                 var boat = GetBoatAtPosition(model.BoatList, row, col);
                 var isOccupied = boat != null;
+                var clickRow=row;
+                var clickCol=col;
 
-                <div class="grid-cell-player @GetOccupiedCssClass(isOccupied)" @onclick="() => HandleCellClick(row, col)">
+                <div class="grid-cell-player @GetOccupiedCssClass(isOccupied)" @onclick="() => HandleCellClick(clickRow, clickCol)">
                     @if (isOccupied)
                     {
                         <span class="boat-name">@boat.Name</span>
@@ -31,11 +33,13 @@
 </div>
 
 <div class="grid-container-ia" id="iaGrid">
-    @for (int row = 0; row < 10; row++)
+    @for (int col = 0; col < 10; col++)
     {
-         for (int col = 0; col < 10; col++)
+         for (int row = 0; row < 10; row++)
         {
-            <div class="grid-cell-ia" @onclick="() => HandleCellClick(row, col)"></div>
+            var clickRow=row;
+            var clickCol=col;
+            <div class="grid-cell-ia" @onclick="() => HandleCellClick(clickRow, clickCol)"></div>
         }
     }
 </div>
@@ -57,19 +61,27 @@
             X = row,
             Y = col
         };
-
+        Console.WriteLine($"You shooted at x:{row+1}, y: {col+1}");
         var response = await HttpClient.PostAsJsonAsync("http://localhost:5282/shoot", shootData);
         shoot = await response.Content.ReadFromJsonAsync<ShootResponse>();
-
-        Console.WriteLine($"Clicked at row: {row}, col: {col}");
+        Console.WriteLine($"Result :{shoot.Hit}");
+        Console.WriteLine($"IA shoot to x={shoot.IAShootPosition.X}, y={shoot.IAShootPosition.Y}");
     }
 
     private Boat GetBoatAtPosition(Boat[] boats, int row, int col)
     {
-        return boats.FirstOrDefault(boat => 
-            boat.Position.X <= col && col < boat.Position.X + boat.Size &&
-            boat.Position.Y <= row && row < boat.Position.Y + 1
-        );
+        return boats.FirstOrDefault(boat =>
+        {
+            if (boat.Facing == "E")
+            {
+                return boat.Position.Y == row && boat.Position.X <= col && col < boat.Position.X + boat.Size;
+            }
+            else if (boat.Facing == "S")
+            {
+                return boat.Position.X == col && boat.Position.Y <= row && row < boat.Position.Y + boat.Size;
+            }
+            return false;
+        });
     }
 
     private string GetOccupiedCssClass(bool isOccupied)
