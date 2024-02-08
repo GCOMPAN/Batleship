@@ -27,28 +27,26 @@
         }
     </div>
 
-@code {
-    private void HandleCellClick(string grid, int row, int col)
-    {
-        Console.WriteLine($"Clicked on {grid} grid at row: {row}, col: {col}");
+    function handleCellClick(grid, row, col) {
+        console.log(`Clicked on ${grid} grid at row: ${row}, col: ${col}`);
     }
 
-   private void HandleIAGridClick(ElementReference elementRef, UIMouseEventArgs eventArgs)
-    {
-        var rect = elementRef.GetBoundingClientRectAsync().Result;
-        var rect = iaGrid.getBoundingClientRect();
-        var x = eventArgs.ClientX - rect.Left;
-        var y = eventArgs.ClientY - rect.Top;
+    function handleIAGridClick(event) {
+        const iaGrid = document.getElementById('iaGrid');
+        const rect = iaGrid.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
 
-        var cellSize = rect.Width / 10;
-        var clickedRow = (int)Math.Floor(y / cellSize);
-        var clickedCol = (int)Math.Floor(x / cellSize);
-
-        Console.WriteLine($"Clicked on IA grid at row: {clickedRow}, col: {clickedCol}");
+        const cellSize = rect.width / 10;
+        const clickedRow = Math.floor(y / cellSize);
+        const clickedCol = Math.floor(x / cellSize);
+        console.log(`Clicked on IA grid at row: ${clickedRow}, col: ${clickedCol}`);
     }
-    protected override async Task OnInitializedAsync()
-    {
+
+@code{
+    protected override async Task OnInitializedAsync(){
+        
         var response = await HttpClient.GetAsync("http://localhost:5282/StartGameAI");
-        var model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
+        var model = response.Content.ReadFromJsonAsync<StartGameAIResponse>();
     }
 }
