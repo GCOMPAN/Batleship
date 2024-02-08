@@ -8,28 +8,28 @@ public class GridService
     private PlayerModel player2;
     private Position[] IAMovesOrder;
     private int IAIndexMove = 0;
-    public bool IsBoatFittingInGrid(Boat boat, GridModel grid)
-    {
-        var incX = boat.Facing == "E";
-        for (int i = 0; i < boat.Size; i++)
-        {
-            if (incX)
-            {
-                if (grid.Grid[boat.Position.X + i,boat.Position.Y] != '\0')
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                if (grid.Grid[boat.Position.X,boat.Position.Y + i] != '\0')
-                {
-                    return false;
-                }
+    bool IsBoatFittingInGrid(Boat boat, GridModel grid) {
+        int maxX = boat.Facing == "E" ? 10 - boat.Size : 9;
+        int maxY = boat.Facing == "S" ? 10 - boat.Size : 9;
+
+        // Check if the boat's starting position is out of bounds
+        if (boat.Position.X > maxX || boat.Position.Y > maxY) {
+            return false;
+        }
+
+        // Check for overlaps
+        for (int i = 0; i < boat.Size; i++) {
+            int checkX = boat.Position.X + (boat.Facing == "E" ? i : 0);
+            int checkY = boat.Position.Y + (boat.Facing == "S" ? i : 0);
+
+            if (grid.Grid[checkX, checkY] != '\0') { // Assuming '\0' indicates an empty cell
+                return false; // Overlap detected
             }
         }
-        return true;
+
+        return true; // The boat fits without overlapping and within bounds
     }
+
 
     public void SetBoatOnGrid(Boat boat, GridModel grid)
     {
@@ -59,13 +59,13 @@ public class GridService
             new Boat('F', 4),
             new Boat('G', 4),
         };
-
-        var random = new Random();
+        
         foreach (var boat in boats)
         {
             bool fits = false;
             while (!fits)
             {
+                var random = new Random();
                 var value = random.Next(2);
                 boat.Facing = value == 0 ? "S" : "E";
 
