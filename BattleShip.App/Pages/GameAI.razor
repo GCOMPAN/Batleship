@@ -57,7 +57,7 @@
         model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
         foreach (var boat in  model.BoatList)
         {
-            SetBoatOnGrid(boat, playerGrid);
+            //SetBoatOnGrid(boat, playerGrid);
         }
     }
 
@@ -68,12 +68,8 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
-        if (shootModel != null)
-        {
-            Console.WriteLine(shootModel);
-        }
     }
-    
+
     public void SetBoatOnGrid(Boat boat, GridModel grid)
     {
         var incX = boat.Facing == "E";
