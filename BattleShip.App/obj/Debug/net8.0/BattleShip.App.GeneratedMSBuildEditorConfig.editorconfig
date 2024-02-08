@@ -30,8 +30,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Gab/OneDrive - IMT MINES ALES/Bureau/Mines Ales/Batleship/BattleShip.App/Pages/GameAI.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2FtZUFJLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gab/OneDrive - IMT MINES ALES/Bureau/Mines Ales/Batleship/BattleShip.App/Pages/GamePvP.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2FtZVB2UC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Gab/OneDrive - IMT MINES ALES/Bureau/Mines Ales/Batleship/BattleShip.App/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gab/OneDrive - IMT MINES ALES/Bureau/Mines Ales/Batleship/BattleShip.App/Pages/LeaderBoard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGVhZGVyQm9hcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Gab/OneDrive - IMT MINES ALES/Bureau/Mines Ales/Batleship/BattleShip.App/_Imports.razor]

@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("https://i.ibb.co/qgsn0vN/DALL-E-2024-02-07-09-05-39-extend-the-image.png");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.back-btn {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    background-color: #3b4948;  
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #fe9a3e;
+}
+
+.container {
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.0);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+a {
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#newGameBtn {
+    background-color: #9d552c;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#newGameBtn:hover {
+    background-color: #cc703b;
+}
+
+#leaderboardBtn {
+    background-color: #3b4948;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+#leaderboardBtn:hover {
+    background-color: #6c7272;
+}
+
+.PvBtn {
+    background-color: #cc703b;
+    color: white;   
+    border: none;
+    transition: background-color 0.3s ease;
+    margin-top: 1px;
+    border-radius: 20px;
+}
+
+.PvBtn:hover {
+    background-color: #000000;
+}
+
+.game-options {
+    display: none;
+    margin-top: 2px;
+}
