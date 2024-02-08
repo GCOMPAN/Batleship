@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<GridService>();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -21,11 +22,16 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapGet("/", (GridService gridService) =>
-{   
-    return gridService.GenerateBoatsPos();
-})
+{
+    Console.WriteLine("Setuping game");
+    return gridService.SetupGameIA();
+});
 
-.WithName("BattleShip")
-.WithOpenApi();
+app.MapPost("/shoot", (GridService gridService, Position position)   =>
+    {
+        Console.WriteLine("Shooting");
+        return gridService.Shoot(position);
+    });
+
 
 app.Run();
