@@ -6,15 +6,24 @@
 <link rel="stylesheet" href="css/grid.css">
 
 <a href="/" class="back-btn">Menu</a>
+<!--<a href="/PlayervsIA" class="game-again-btn">New Game</a>-->
 
 <div class="grid-container-player" id="playerGrid">
-    @if(model!=null){
+    @if (model != null)
+    {
         @for (int row = 0; row < 10; row++)
         {
             for (int col = 0; col < 10; col++)
             {
-                var isOccupied = IsCellOccupied(model.BoatList, row, col);
-                <div class="grid-cell-player @GetOccupiedCssClass(isOccupied)" @onclick="() => HandleCellClick(row, col)"></div>
+                var boat = GetBoatAtPosition(model.BoatList, row, col);
+                var isOccupied = boat != null;
+
+                <div class="grid-cell-player @GetOccupiedCssClass(isOccupied)" @onclick="() => HandleCellClick(row, col)">
+                    @if (isOccupied)
+                    {
+                        <span class="boat-name">@boat.Name</span>
+                    }
+                </div>
             }
         }
     }
@@ -23,7 +32,7 @@
 <div class="grid-container-ia" id="iaGrid">
     @for (int row = 0; row < 10; row++)
     {
-        for (int col = 0; col < 10; col++)
+         for (int col = 0; col < 10; col++)
         {
             <div class="grid-cell-ia" @onclick="() => HandleCellClick(row, col)"></div>
         }
@@ -53,9 +62,12 @@
         }
     }
 
-    private bool IsCellOccupied(Boat[] boats, int row, int col)
+    private Boat GetBoatAtPosition(Boat[] boats, int row, int col)
     {
-        return boats.Any(boat => boat.Position.X <= col && col < boat.Position.X  + boat.Size && boat.Position.Y <= row && row < boat.Position.Y + 1);
+        return boats.FirstOrDefault(boat => 
+            boat.Position.X <= col && col < boat.Position.X + boat.Size &&
+            boat.Position.Y <= row && row < boat.Position.Y + 1
+        );
     }
 
     private string GetOccupiedCssClass(bool isOccupied)
