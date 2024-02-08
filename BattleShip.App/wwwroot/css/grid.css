@@ -64,3 +64,11 @@
 .game-again-btn:hover{
     background-color: #cc703b;
 }
+
+.grid-cell-hit {
+    background-color: red;
+}
+
+.grid-cell-miss {
+    background-color: gray;
+}

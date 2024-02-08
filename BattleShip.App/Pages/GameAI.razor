@@ -44,9 +44,10 @@
     }
 </div>
 
-@code{
+@code
+{
     private StartGameAIResponse model;
-    private ShootResponse shoot;
+    private ShootResponse shootModel;
 
     protected override async Task OnInitializedAsync()
     {
@@ -54,18 +55,17 @@
         model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
     }
 
-    protected async Task HandleCellClick(int row, int col)
+    private async void HandleCellClick(int row, int col)
     {
-        var shootData = new
+        Console.WriteLine($"Clicked at row: {row}, col: {col}");
+        var position = new Position(row, col);
+        var jsonContent = JsonContent.Create(position);
+        var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
+        shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
+        if (shootModel != null)
         {
-            X = row,
-            Y = col
-        };
-        Console.WriteLine($"You shooted at x:{row+1}, y: {col+1}");
-        var response = await HttpClient.PostAsJsonAsync("http://localhost:5282/shoot", shootData);
-        shoot = await response.Content.ReadFromJsonAsync<ShootResponse>();
-        Console.WriteLine($"Result :{shoot.Hit}");
-        Console.WriteLine($"IA shoot to x={shoot.IAShootPosition.X}, y={shoot.IAShootPosition.Y}");
+            Console.WriteLine(shootModel);
+        }
     }
 
     private Boat GetBoatAtPosition(Boat[] boats, int row, int col)
@@ -87,5 +87,10 @@
     private string GetOccupiedCssClass(bool isOccupied)
     {
         return isOccupied ? "grid-cell-occupied" : string.Empty;
+    }
+
+    private string GetShotHit(bool isHitting)
+    {
+        return isHitting ? "gric-cell-hit" : string.Empty;
     }
 }

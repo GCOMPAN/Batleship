@@ -49,41 +49,40 @@ public class GridService
 
     public Boat[] GenerateBoatsPos(GridModel grid)
     {
-        var a = new Boat('A', 1);
-        var b = new Boat('B', 2);
-        var c = new Boat('C', 3);
-        var d = new Boat('D', 4);
-        var e = new Boat('E', 4);
-        var f = new Boat('F', 4);
-        var g = new Boat('G', 4);
-        
-        Boat[] boatList = [a, b, c, d, e, f, g];
+        var boats = new Boat[]
+        {
+            new Boat('A', 1),
+            new Boat('B', 2),
+            new Boat('C', 3),
+            new Boat('D', 4),
+            new Boat('E', 4),
+            new Boat('F', 4),
+            new Boat('G', 4),
+        };
 
         var random = new Random();
-        foreach (var boat in boatList)
+        foreach (var boat in boats)
         {
-            var value = random.Next(2);
-            boat.Facing = value == 0 ? "S" : "E";   //S = South and E = East
-
-            int maxX = boat.Facing == "S" ? 10 : 10 - boat.Size;
-            int maxY = boat.Facing == "E" ? 10 : 10 - boat.Size;
-
-            int rdmXPos = random.Next(maxX);
-            int rdmYPos = random.Next(maxY);
-            Position pos = new(rdmXPos, rdmYPos);
-            boat.Position = pos;
-            
-            while (!IsBoatFittingInGrid(boat, grid))
+            bool fits = false;
+            while (!fits)
             {
-                rdmXPos = random.Next(maxX);
-                boat.Position.X = rdmXPos;
-                rdmYPos = random.Next(maxY);
-                boat.Position.Y = rdmYPos;
+                var value = random.Next(2);
+                boat.Facing = value == 0 ? "S" : "E";
+
+                int maxX = boat.Facing == "S" ? 10 : 10 - boat.Size + 1;
+                int maxY = boat.Facing == "E" ? 10 : 10 - boat.Size + 1;
+
+                int rdmXPos = random.Next(maxX);
+                int rdmYPos = random.Next(maxY);
+                boat.Position = new Position(rdmXPos, rdmYPos);
+
+                fits = IsBoatFittingInGrid(boat, grid);
             }
             SetBoatOnGrid(boat, grid);
         }
-        return boatList;
+        return boats;
     }
+
 
     public Position[] GenerateAIMoves()
     {
