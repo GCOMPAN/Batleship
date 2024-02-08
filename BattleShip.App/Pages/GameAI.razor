@@ -1,4 +1,5 @@
 @page "/PlayervsIA"
+@using Battleship.Models
 @inject HttpClient HttpClient
 
     <link rel="stylesheet" href="css/home.css">
@@ -26,25 +27,28 @@
         }
     </div>
 
-    function handleCellClick(grid, row, col) {
-        console.log(`Clicked on ${grid} grid at row: ${row}, col: ${col}`);
+@code {
+    private void HandleCellClick(string grid, int row, int col)
+    {
+        Console.WriteLine($"Clicked on {grid} grid at row: {row}, col: {col}");
     }
 
-    function handleIAGridClick(event) {
-        const iaGrid = document.getElementById('iaGrid');
-        const rect = iaGrid.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
+   private void HandleIAGridClick(ElementReference elementRef, UIMouseEventArgs eventArgs)
+    {
+        var rect = elementRef.GetBoundingClientRectAsync().Result;
+        var rect = iaGrid.getBoundingClientRect();
+        var x = eventArgs.ClientX - rect.Left;
+        var y = eventArgs.ClientY - rect.Top;
 
-        const cellSize = rect.width / 10;
-        const clickedRow = Math.floor(y / cellSize);
-        const clickedCol = Math.floor(x / cellSize);
-        console.log(`Clicked on IA grid at row: ${clickedRow}, col: ${clickedCol}`);
+        var cellSize = rect.Width / 10;
+        var clickedRow = (int)Math.Floor(y / cellSize);
+        var clickedCol = (int)Math.Floor(x / cellSize);
+
+        Console.WriteLine($"Clicked on IA grid at row: {clickedRow}, col: {clickedCol}");
     }
-
-@code{
-    protected override async Task OnInitializedAsync(){
-        var response = await HttpClient.GetAsync("http://localhost:5282/StartGameIA");
-        /*var model = response.Content.ReadFromJsonAsync<StartGameIAResponse>();*/
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await HttpClient.GetAsync("http://localhost:5282/StartGameAI");
+        var model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
     }
 }

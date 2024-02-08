@@ -20,12 +20,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/StartGameIA", (GridService gridService) =>
-{   
-    return gridService.GenerateBoatsPos();
-})
+app.MapGet("/StartGameAI", (GridService gridService) =>
+{
+    Console.WriteLine("Setuping game");
+    return gridService.SetupGameIA();
+});
 
-.WithName("BattleShip")
-.WithOpenApi();
+app.MapPost("/shoot", (GridService gridService, Position position)   =>
+    {
+        Console.WriteLine("Shooting");
+        return gridService.Shoot(position);
+    });
 
 app.Run();

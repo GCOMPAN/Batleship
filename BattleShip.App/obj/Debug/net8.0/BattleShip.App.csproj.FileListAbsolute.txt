@@ -2056,3 +2056,12 @@ C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Ap
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\obj\Debug\net8.0\compressed\ia9h8xxjs8.gz
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\obj\Debug\net8.0\compressed\tzio2ossgu.gz
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\obj\Debug\net8.0\compressed\hg6vzwxzpq.gz
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\bin\Debug\net8.0\wwwroot\_framework\Battleship.Models.pdb
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\bin\Debug\net8.0\wwwroot\_framework\Battleship.Models.wasm
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\bin\Debug\net8.0\wwwroot\_framework\Battleship.Models.pdb.gz
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\bin\Debug\net8.0\wwwroot\_framework\Battleship.Models.wasm.gz
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\bin\Debug\net8.0\Battleship.Models.dll
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\bin\Debug\net8.0\Battleship.Models.pdb
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\obj\Debug\net8.0\webcil\Battleship.Models.wasm
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\obj\Debug\net8.0\compressed\qfi6gmi44e.gz
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\obj\Debug\net8.0\compressed\gwawrtqy79.gz
