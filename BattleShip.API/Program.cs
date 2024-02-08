@@ -22,11 +22,13 @@ app.UseHttpsRedirection();
 
 app.MapGet("/", (GridService gridService) =>
 {
+    Console.WriteLine("Setuping game");
     return gridService.SetupGameIA();
 });
 
 app.MapPost("/shoot", (GridService gridService, Position position)   =>
     {
+        Console.WriteLine("Shooting");
         return gridService.Shoot(position);
     });
 

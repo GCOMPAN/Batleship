@@ -114,8 +114,9 @@ public class GridService
     }
 
 
-    public Boat[] SetupGameIA()
+    public StartGameAIResponse SetupGameIA()
     {
+        var response = new StartGameAIResponse();
         GridModel grid1 = new (0);
         grid1.BoatList = GenerateBoatsPos(grid1);
         player1 = new("p1", 0, grid1);
@@ -126,7 +127,11 @@ public class GridService
 
         IAMovesOrder = GenerateAIMoves();
 
-        return player1.GridModel.BoatList;
+        response.BoatList = player1.GridModel.BoatList;
+        response.GameId = 0;
+        response.PlayerId = 0;
+
+        return response;
     }
 
     public (bool isHit, Boat hitBoat) IsHittingShip(Position position, PlayerModel target)
