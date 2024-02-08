@@ -1,5 +1,6 @@
 @page "/PlayervsIA"
 @using Battleship.Models
+@using System.Net.Http.Json;
 @inject HttpClient HttpClient
 
 <link rel="stylesheet" href="css/home.css">
@@ -41,6 +42,7 @@
 
 @code{
     private StartGameAIResponse model;
+    private ShootResponse shoot;
 
     protected override async Task OnInitializedAsync()
     {
@@ -48,8 +50,17 @@
         model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
     }
 
-    private void HandleCellClick(int row, int col)
+    protected async Task HandleCellClick(int row, int col)
     {
+        var shootData = new
+        {
+            X = row,
+            Y = col
+        };
+
+        var response = await HttpClient.PostAsJsonAsync("http://localhost:5282/shoot", shootData);
+        shoot = await response.Content.ReadFromJsonAsync<ShootResponse>();
+
         Console.WriteLine($"Clicked at row: {row}, col: {col}");
     }
 
