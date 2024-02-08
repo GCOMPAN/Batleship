@@ -1,0 +1,43 @@
+.grid-container-player {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+}
+
+.grid-cell-player {
+    height: 45px;
+    width: 45px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s ease;
+}
+
+.grid-cell-player:hover {   
+    background-color: #7c7c7c;
+}
+
+.grid-container-ia {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translate(0, -50%);
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+}
+
+.grid-cell-ia {
+    height: 60px;
+    width: 60px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s ease;
+}
+
+.grid-cell-ia:hover {
+    background-color: #7c7c7c;
+}
