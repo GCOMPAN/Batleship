@@ -32,6 +32,7 @@
 
 @code{
     private StartGameAIResponse model;
+    private ShootResponse shootModel;
 
     protected override async Task OnInitializedAsync()
     {
@@ -39,9 +40,17 @@
         model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
     }
 
-    private void HandleCellClick(int row, int col)
+    private async void HandleCellClick(int row, int col)
     {
         Console.WriteLine($"Clicked at row: {row}, col: {col}");
+        var position = new Position(row, col);
+        var jsonContent = JsonContent.Create(position);
+        var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
+        shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
+        if (shootModel != null)
+        {
+            Console.WriteLine(shootModel);
+        }
     }
 
     private bool IsCellOccupied(Boat[] boats, int row, int col)
@@ -52,5 +61,10 @@
     private string GetOccupiedCssClass(bool isOccupied)
     {
         return isOccupied ? "grid-cell-occupied" : string.Empty;
+    }
+
+    private string GetShotHit(bool isHitting)
+    {
+        return isHitting ? "gric-cell-hit" : string.Empty;
     }
 }

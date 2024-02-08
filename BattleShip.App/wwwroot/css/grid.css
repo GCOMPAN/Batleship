@@ -45,3 +45,11 @@
 .grid-cell-occupied {
     background-color: black;
 }
+
+.grid-cell-hit {
+    background-color: red;
+}
+
+.grid-cell-miss {
+    background-color: gray;
+}
