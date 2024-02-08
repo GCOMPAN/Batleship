@@ -20,7 +20,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/", (GridService gridService) =>
+app.MapGet("/StartGameIA", (GridService gridService) =>
 {   
     return gridService.GenerateBoatsPos();
 })
