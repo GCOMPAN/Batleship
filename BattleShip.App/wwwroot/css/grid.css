@@ -41,3 +41,7 @@
 .grid-cell-ia:hover {
     background-color: #7c7c7c;
 }
+
+.grid-cell-occupied {
+    background-color: black;
+}

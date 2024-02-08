@@ -12,7 +12,8 @@
     {
         for (int col = 0; col < 10; col++)
         {
-            <div class="grid-cell-player" @onclick="() => HandleCellClick("player", row, col)"></div>
+            var isOccupied = IsCellOccupied(boatList, row, col);
+            <div class="grid-cell-player @GetOccupiedCssClass(isOccupied)" @onclick="() => HandleCellClick("player", row, col)"></div>
         }
     }
 </div>
@@ -43,5 +44,15 @@
     private void HandleCellClick(string grid, int row, int col)
     {
         Console.WriteLine($"Clicked on {grid} grid at row: {row}, col: {col}");
+    }
+
+        private bool IsCellOccupied(Boat[] boats, int row, int col)
+    {
+        return boats.Any(boat => boat.XPos <= col && col < boat.XPos + boat.Size && boat.YPos <= row && row < boat.YPos + 1);
+    }
+
+    private string GetOccupiedCssClass(bool isOccupied)
+    {
+        return isOccupied ? "grid-cell-occupied" : string.Empty;
     }
 }
