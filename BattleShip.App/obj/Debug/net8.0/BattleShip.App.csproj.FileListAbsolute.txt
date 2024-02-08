@@ -2065,3 +2065,12 @@ C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Ap
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\obj\Debug\net8.0\webcil\Battleship.Models.wasm
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\obj\Debug\net8.0\compressed\qfi6gmi44e.gz
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.App\obj\Debug\net8.0\compressed\gwawrtqy79.gz
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.App\bin\Debug\net8.0\wwwroot\_framework\Battleship.Models.pdb
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.App\bin\Debug\net8.0\wwwroot\_framework\Battleship.Models.wasm
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.App\bin\Debug\net8.0\wwwroot\_framework\Battleship.Models.pdb.gz
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.App\bin\Debug\net8.0\wwwroot\_framework\Battleship.Models.wasm.gz
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.App\bin\Debug\net8.0\Battleship.Models.dll
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.App\bin\Debug\net8.0\Battleship.Models.pdb
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.App\obj\Debug\net8.0\webcil\Battleship.Models.wasm
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.App\obj\Debug\net8.0\compressed\xhmqq1ptnz.gz
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.App\obj\Debug\net8.0\compressed\t9oxncrowx.gz
