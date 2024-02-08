@@ -21,11 +21,14 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapGet("/", (GridService gridService) =>
-{   
-    return gridService.GenerateBoatsPos();
-})
+{
+    return gridService.SetupGameIA();
+});
 
-.WithName("BattleShip")
-.WithOpenApi();
+app.MapPost("/shoot", (GridService gridService, Position position)   =>
+    {
+        return gridService.Shoot(position);
+    });
+
 
 app.Run();
