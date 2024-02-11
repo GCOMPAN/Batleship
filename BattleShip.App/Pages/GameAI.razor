@@ -57,7 +57,7 @@
         model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
         foreach (var boat in  model.BoatList)
         {
-            //SetBoatOnGrid(boat, playerGrid);
+            SetBoatOnGrid(boat, playerGrid);
         }
     }
 
@@ -68,20 +68,25 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
+        if (shootModel != null)
+        {
+            Console.WriteLine(shootModel);
+        }
     }
-
-    public void SetBoatOnGrid(Boat boat, GridModel grid)
+    
+    public void SetBoatOnGrid(Boat boat, char[,] grid)
+    
     {
         var incX = boat.Facing == "E";
         for (int i = 0; i < boat.Size; i++)
         {
             if (incX)
             {
-                grid.Grid[boat.Position.X + i, boat.Position.Y] = boat.Name;
+                grid[boat.Position.X + i, boat.Position.Y] = boat.Name;
             }
             else
             {
-                grid.Grid[boat.Position.X, boat.Position.Y + i] = boat.Name;
+                grid[boat.Position.X, boat.Position.Y + i] = boat.Name;
             }
         }
     }
