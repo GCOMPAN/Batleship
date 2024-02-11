@@ -35,11 +35,15 @@
 <div class="grid-container-ia" id="iaGrid">
     @for (int row = 0; row < 10; row++)
     {
-         for (int col = 0; col < 10; col++)
+        for (int col = 0; col < 10; col++)
         {
-            var clickRow=row;
-            var clickCol=col;
-            <div class="grid-cell-ia" @onclick="() => HandleCellClick(clickRow, clickCol)"></div>
+            var clickRow = row;
+            var clickCol = col;
+            var isHit = shootModel?.Hit ?? false;
+            <div class="grid-cell-ia @GetShotHit(isHit)" @onclick="() => HandleCellClick(clickRow, clickCol)">
+                @if (isHit)
+                {}
+            </div>
         }
     }
 </div>
@@ -68,6 +72,8 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
+        Console.WriteLine($"Result of your shoot: {shootModel.Hit}");
+        StateHasChanged();
     }
     
     public void SetBoatOnGrid(Boat boat, char[,] grid)
@@ -108,8 +114,8 @@
         return isOccupied ? "grid-cell-occupied" : string.Empty;
     }
 
-    private string GetShotHit(bool isHitting)
+    private string GetShotHit(bool isHit)
     {
-        return isHitting ? "gric-cell-hit" : string.Empty;
+        return isHit ? "grid-cell-hit" : string.Empty;
     }
 }
