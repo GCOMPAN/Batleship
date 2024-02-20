@@ -4,13 +4,18 @@ namespace BattleShip.API.Services;
 
 public class GridService
 {
+    private const int GridSize = 10;
+    private const char EmptyCell = '\0';
+    private const char HitMarker = 'X';
+
+    
     private PlayerModel player1;
     private PlayerModel player2;
     private Position[] IAMovesOrder;
     private int IAIndexMove = 0;
     bool IsBoatFittingInGrid(Boat boat, GridModel grid) {
-        int maxX = boat.Facing == "E" ? 10 - boat.Size : 9;
-        int maxY = boat.Facing == "S" ? 10 - boat.Size : 9;
+        int maxX = boat.Facing == "E" ? GridSize - boat.Size : GridSize - 1;
+        int maxY = boat.Facing == "S" ? GridSize - boat.Size : GridSize - 1;
 
         // Check if the boat's starting position is out of bounds
         if (boat.Position.X > maxX || boat.Position.Y > maxY) {
@@ -22,7 +27,7 @@ public class GridService
             int checkX = boat.Position.X + (boat.Facing == "E" ? i : 0);
             int checkY = boat.Position.Y + (boat.Facing == "S" ? i : 0);
 
-            if (grid.Grid[checkX, checkY] != '\0') { // Assuming '\0' indicates an empty cell
+            if (grid.Grid[checkX, checkY] != EmptyCell) {
                 return false; // Overlap detected
             }
         }
@@ -60,17 +65,17 @@ public class GridService
             new Boat('G', 4),
         };
         
+        var random = new Random();
         foreach (var boat in boats)
         {
             bool fits = false;
             while (!fits)
             {
-                var random = new Random();
                 var value = random.Next(2);
                 boat.Facing = value == 0 ? "S" : "E";
 
-                int maxX = boat.Facing == "S" ? 10 : 10 - boat.Size + 1;
-                int maxY = boat.Facing == "E" ? 10 : 10 - boat.Size + 1;
+                int maxX = boat.Facing == "S" ? GridSize : GridSize - boat.Size + 1;
+                int maxY = boat.Facing == "E" ? GridSize : GridSize - boat.Size + 1;
 
                 int rdmXPos = random.Next(maxX);
                 int rdmYPos = random.Next(maxY);
@@ -89,9 +94,9 @@ public class GridService
         var moves = new List<Position>();
 
         // Generate all possible moves in a 10x10 grid
-        for (int x = 0; x < 10; x++)
+        for (int x = 0; x < GridSize; x++)
         {
-            for (int y = 0; y < 10; y++)
+            for (int y = 0; y < GridSize; y++)
             {
                 moves.Add(new Position(x, y));
             }
@@ -127,6 +132,7 @@ public class GridService
         IAMovesOrder = GenerateAIMoves();
 
         response.BoatList = player1.GridModel.BoatList;
+        response.BoatList2 = player2.GridModel.BoatList;
         response.GameId = 0;
         response.PlayerId = 0;
 
@@ -148,29 +154,35 @@ public class GridService
 
     public Position[] GetBoatPositions(Boat boat)
     {
-        Position[] positions = [boat.Position];
-        
+        // Initialize a list to hold positions
+        List<Position> positions = new List<Position>();
+
+        // Add the starting position
+        positions.Add(boat.Position);
+
+        // Loop to add the rest of the positions based on the boat's size
         for (int i = 1; i < boat.Size; i++)
         {
             if (boat.Facing == "E")
             {
-                positions.Append(new Position(boat.Position.X + i, boat.Position.Y));
+                positions.Add(new Position(boat.Position.X + i, boat.Position.Y));
             }
-            else
+            else // Assuming the only other direction is South ("S")
             {
-                positions.Append(new Position(boat.Position.X, boat.Position.Y + i));
+                positions.Add(new Position(boat.Position.X, boat.Position.Y + i));
             }
         }
-        
-        return positions;
+
+        // Convert the list back to an array before returning
+        return positions.ToArray();
     }
     
-    public bool IsBoatSinked(Boat boat, PlayerModel player)
+    public bool IsBoatSunk(Boat boat, PlayerModel player)
     {
         Position[] boatPositions = GetBoatPositions(boat);
         foreach (var pos in boatPositions)
         {
-            if (player.GridModel.Grid[pos.X, pos.Y] != 'X') return false;
+            if (player.GridModel.Grid[pos.X, pos.Y] != HitMarker) return false;
         }
 
         return true;
@@ -206,8 +218,8 @@ public class GridService
         response.Hit = isHit;
         if (isHit)
         {
-            player2.GridModel.Grid[position.X, position.Y] = 'X';
-            bool isSinking = IsBoatSinked(boat, player2);
+            player2.GridModel.Grid[position.X, position.Y] = HitMarker;
+            bool isSinking = IsBoatSunk(boat, player2);
             response.Sink = isSinking;
             if (isSinking)
             {
@@ -226,8 +238,8 @@ public class GridService
         response.IAShootHit = isHitIA;
         if (isHitIA)
         {
-            player1.GridModel.Grid[IAShot.X, IAShot.Y] = 'X';
-            bool isSinkingIA = IsBoatSinked(boatIA, player1);
+            player1.GridModel.Grid[IAShot.X, IAShot.Y] = HitMarker;
+            bool isSinkingIA = IsBoatSunk(boatIA, player1);
             response.IAShootSink = isSinkingIA;
             if (isSinkingIA)
             {
