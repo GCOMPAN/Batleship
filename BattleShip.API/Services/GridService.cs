@@ -200,6 +200,8 @@ public class GridService
     {
         // Handle player shot
         ShootResponse response = new();
+        response.X = position.X;
+        response.Y = position.Y;
         var (isHit, boat) = IsHittingShip(position, player2);
         response.Hit = isHit;
         if (isHit)
