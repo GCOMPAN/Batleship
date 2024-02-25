@@ -12,19 +12,24 @@
 <div class="grid-container-player" id="playerGrid">
     @if (model != null)
     {
-        @for (int row = 0; row < 10; row++)
+        @for (int col = 0; col < 10; col++)
         {
-            for (int col = 0; col < 10; col++)
+            for (int row = 0; row < 10; row++)
             {
-                var boat = GetBoatAtPosition(model.BoatList, row, col);
+                var boat = GetBoatAtPosition(model.BoatList, col, row);
                 var isOccupied = boat != null;
+                var cellState = playerGrid[col, row]; // Assuming you have a mechanism like this in place
                 var clickRow=row;
                 var clickCol=col;
 
-                <div class="grid-cell-player @GetOccupiedCssClass(isOccupied)" @onclick="() => HandleCellClick(clickRow, clickCol)">
-                    @if (isOccupied)
+                <div class="grid-cell-player @(GetCellCssClass(cellState, isOccupied))" @onclick="() => HandleCellClick(clickCol, clickRow)">
+                    @if (isOccupied && cellState == CellState.Untouched)
                     {
                         <span class="boat-name">@boat.Name</span>
+                    }
+                    else if (cellState == CellState.Hit)
+                    {
+                        <span class="hit-indicator">X</span> @* Example hit indicator *@
                     }
                 </div>
             }
@@ -32,90 +37,78 @@
     }
 </div>
 
+
 <div class="grid-container-ia" id="iaGrid">
-    @for (int row = 0; row < 10; row++)
+    @for (int col = 0; col < 10; col++)
     {
-        for (int col = 0; col < 10; col++)
+        for (int row = 0; row < 10; row++)
         {
             var clickRow = row;
             var clickCol = col;
-            var isHit = shootModel?.Hit ?? false;
-            <div class="grid-cell-ia @GetShotHit(isHit)" @onclick="() => HandleCellClick(clickRow, clickCol)">
-                @if (isHit)
-                {}
+            var cellState = opponentGrid[col, row];
+            <div class="grid-cell-ia @GetCellCssClass(cellState, false)" 
+                 @onclick="() => HandleCellClick(clickCol, clickRow)">
             </div>
         }
     }
 </div>
 
-@code
-{
+
+@code {
     private StartGameAIResponse model;
     private ShootResponse shootModel;
-    private bool[,] oponentGrid = new bool[10, 10];
-    private char[,] playerGrid = new char[10, 10];
+    private CellState[,] opponentGrid = new CellState[10, 10];
+    private CellState[,] playerGrid = new CellState[10, 10];
+    private List<Boat> playerBoats = new List<Boat>();
 
     protected override async Task OnInitializedAsync()
     {
         var response = await HttpClient.GetAsync("http://localhost:5282/StartGameAI");
         model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
-        foreach (var boat in  model.BoatList)
-        {
-            SetBoatOnGrid(boat, playerGrid);
-        }
+
+        // Initialize playerBoats based on the model.BoatList
+        playerBoats = model.BoatList.ToList();
     }
 
-    private async void HandleCellClick(int row, int col)
+    private async void HandleCellClick(int col, int row)
     {
-        Console.WriteLine($"Clicked at row: {row+1}, col: {col+1}");
-        var position = new Position(row, col);
+        Console.WriteLine($"Clicked at col: {col + 1}, row: {row + 1}");
+        
+        // Check if the cell has already been interacted with
+        if (opponentGrid[col, row] != CellState.Untouched) return;
+        
+        var position = new Position (col, row ); // Ensure Position is correctly instantiated
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
+
+        // Update the opponentGrid based on the shoot result
+        opponentGrid[col, row] = shootModel.Hit ? CellState.Hit : CellState.Miss;
+        
+        // Update the player's grid based on the AI's shoot result
+        var aiCol = shootModel.IAShootPosition.X;
+        var aiRow = shootModel.IAShootPosition.Y;
+        playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
+
         Console.WriteLine($"Result of your shoot: {shootModel.Hit}");
         StateHasChanged();
     }
-    
-    public void SetBoatOnGrid(Boat boat, char[,] grid)
-    
+
+    private Boat GetBoatAtPosition(IEnumerable<Boat> boats, int col, int row)
     {
-        var incX = boat.Facing == "E";
-        for (int i = 0; i < boat.Size; i++)
+        return boats.FirstOrDefault(boat => boat.IsHit(new Position(col, row)));
+    }
+
+
+    // Adjusted GetCellCssClass method to correct the typo
+    private string GetCellCssClass(CellState cellState, bool isOccupied)
+    {
+        return cellState switch
         {
-            if (incX)
-            {
-                grid[boat.Position.X + i, boat.Position.Y] = boat.Name;
-            }
-            else
-            {
-                grid[boat.Position.X, boat.Position.Y + i] = boat.Name;
-            }
-        }
+            CellState.Hit => "grid-cell-hit",
+            CellState.Miss => "grid-cell-miss",
+            _ => isOccupied ? "grid-cell-occupied" : "grid-cell-untouched"
+        };
     }
 
-    private Boat GetBoatAtPosition(Boat[] boats, int row, int col)
-    {
-        return boats.FirstOrDefault(boat =>
-        {
-            if (boat.Facing == "E")
-            {
-                return boat.Position.Y == row && boat.Position.X <= col && col < boat.Position.X + boat.Size;
-            }
-            else if (boat.Facing == "S")
-            {
-                return boat.Position.X == col && boat.Position.Y <= row && row < boat.Position.Y + boat.Size;
-            }
-            return false;
-        });
-    }
-
-    private string GetOccupiedCssClass(bool isOccupied)
-    {
-        return isOccupied ? "grid-cell-occupied" : string.Empty;
-    }
-
-    private string GetShotHit(bool isHit)
-    {
-        return isHit ? "grid-cell-hit" : string.Empty;
-    }
 }
