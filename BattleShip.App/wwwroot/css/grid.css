@@ -66,10 +66,13 @@
 }
 
 .grid-cell-hit {
-    background-color: red;
-    transition: background-color 0.3s ease;
+    background-color: red; /* or any visual representation for hits */
 }
 
 .grid-cell-miss {
-    background-color: gray;
+    background-color: gray; /* or any visual representation for misses */
+}
+
+.grid-cell-untouched {
+    background-color: blue; /* Adjust as needed */
 }
