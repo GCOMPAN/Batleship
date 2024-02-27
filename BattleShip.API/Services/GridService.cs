@@ -132,7 +132,6 @@ public class GridService
         IAMovesOrder = GenerateAIMoves();
 
         response.BoatList = player1.GridModel.BoatList;
-        response.BoatList2 = player2.GridModel.BoatList;
         response.GameId = 0;
         response.PlayerId = 0;
 
