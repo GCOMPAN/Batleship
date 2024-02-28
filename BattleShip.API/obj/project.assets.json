@@ -476,26 +476,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\tommu\\.nuget\\packages\\": {}
-=======
     "C:\\Users\\NDHZ8697\\.nuget\\packages\\": {}
->>>>>>> 18aff4171c1879a138e384ad1c7ba31ebf9b6f67
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "c:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
-      "projectName": "BattleShip.API",
-      "projectPath": "c:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
-      "packagesPath": "C:\\Users\\tommu\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.API\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\tommu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
       "projectUniqueName": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
       "projectName": "BattleShip.API",
       "projectPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
@@ -504,26 +489,19 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\NDHZ8697\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> 18aff4171c1879a138e384ad1c7ba31ebf9b6f67
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-<<<<<<< HEAD
-            "c:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
-              "projectPath": "c:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\Battleship.Models.csproj"
-=======
             "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
               "projectPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj"
->>>>>>> 18aff4171c1879a138e384ad1c7ba31ebf9b6f67
             }
           }
         }
@@ -532,11 +510,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -571,7 +544,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

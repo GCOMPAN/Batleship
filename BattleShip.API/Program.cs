@@ -22,10 +22,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors(c=>{c.AllowAnyMethod();c.AllowAnyHeader();c.AllowAnyOrigin();});
 
-app.MapGet("/StartGameAI", (GridService gridService, bool playerPlacement) =>
+app.MapGet("/StartGameAI", (GridService gridService, bool playerPlacement, bool hardMode) =>
 {
     Console.WriteLine("Setuping game");
-    return gridService.SetupGameIA(playerPlacement);
+    return gridService.SetupGameIA(playerPlacement, hardMode);
 });
 
 

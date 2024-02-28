@@ -12,9 +12,9 @@
 <div class="grid-container-player" id="playerGrid">
     @if (model != null)
     {
-        @for (int col = 0; col < 10; col++)
+        @for (int col = 0; col < gridSize; col++)
         {
-            for (int row = 0; row < 10; row++)
+            for (int row = 0; row < gridSize; row++)
             {
                 var boat = GetBoatAtPosition(model.BoatList, col, row);
                 var isOccupied = boat != null;
@@ -38,16 +38,19 @@
 </div>
 
 <label>
-    <input type="checkbox" @bind="randomPlacement" />
     Placement aléatoire
 </label>
+<input type="checkbox" @bind="randomPlacement" />
+
+<label>Hard mode</label>
+<input type="checkbox" @bind="hardMode" />
 <button @onclick="OnNewGameClick">Nouvelle partie</button>
 
 
 <div class="grid-container-ia" id="iaGrid">
-    @for (int col = 0; col < 10; col++)
+    @for (int col = 0; col < gridSize; col++)
     {
-        for (int row = 0; row < 10; row++)
+        for (int row = 0; row < gridSize; row++)
         {
             var clickRow = row;
             var clickCol = col;
@@ -61,22 +64,25 @@
 
 
 @code {
+    private int gridSize = 10;
     private StartGameAIResponse model;
     private ShootResponse shootModel;
     private CellState[,] opponentGrid = new CellState[10, 10];
     private CellState[,] playerGrid = new CellState[10, 10];
     private List<Boat> playerBoats = new List<Boat>();
+    
 
     private bool randomPlacement = true;
+    private bool hardMode = false;
 
     protected async Task OnNewGameClick()
     {   
-        opponentGrid = new CellState[10, 10];
-        playerGrid = new CellState[10, 10];
+        opponentGrid = new CellState[gridSize, gridSize];
+        playerGrid = new CellState[gridSize, gridSize];
         if (randomPlacement)
         {
 
-            var url = $"http://localhost:5282/StartGameAI?playerPlacement={!randomPlacement}";
+            var url = $"http://localhost:5282/StartGameAI?playerPlacement={!randomPlacement}&hardMode={hardMode}";
             var response = await HttpClient.GetAsync(url);
             model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
         }
