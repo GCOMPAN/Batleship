@@ -1,17 +1,5 @@
 <<<<<<< HEAD
 =======
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.deps.json
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.dll
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.pdb
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.AssemblyInfoInputs.cache
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.AssemblyInfo.cs
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.csproj.CoreCompileInputs.cache
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.sourcelink.json
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.dll
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\refint\Battleship.Models.dll
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.pdb
-C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\ref\Battleship.Models.dll
 >>>>>>> 74c3da1e4ebbf62e95fb15c247436c2864796179
 C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.deps.json
 C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.dll
@@ -37,3 +25,15 @@ C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Bat
 C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\refint\Battleship.Models.dll
 C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.pdb
 C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\ref\Battleship.Models.dll
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.deps.json
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.dll
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.pdb
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.AssemblyInfoInputs.cache
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.AssemblyInfo.cs
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.csproj.CoreCompileInputs.cache
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.sourcelink.json
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.dll
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\refint\Battleship.Models.dll
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.pdb
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\obj\Debug\net8.0\ref\Battleship.Models.dll
