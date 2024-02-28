@@ -2,12 +2,14 @@ using Battleship.Models;
 
 namespace BattleShip.API.Services;
 
+
 public class GridService
 {
-    private const int GridSize = 10;
     private const char EmptyCell = '\0';
     private const char HitMarker = 'X';
     private const char MissMarker = 'O';
+    
+    private int GridSize = 10; // 15 in hardMode
 
     
     private PlayerModel player1;
@@ -15,7 +17,10 @@ public class GridService
     private Position[] IAMovesOrder;
     private int IAIndexMove = 0;
     private List<IAHistoryModel> IAHistory = new List<IAHistoryModel>();
+    private bool ExpertIA = false;
     private Random rng = new Random();
+    private bool GameOver = false;
+    
     bool IsBoatFittingInGrid(Boat boat, GridModel grid) {
         int maxX = boat.Facing == "E" ? GridSize - boat.Size : GridSize - 1;
         int maxY = boat.Facing == "S" ? GridSize - boat.Size : GridSize - 1;
@@ -89,35 +94,6 @@ public class GridService
             SetBoatOnGrid(boat, grid);
         }
         return boats;
-    }
-
-
-    public Position[] GenerateAIMoves()
-    {
-        var moves = new List<Position>();
-
-        // Generate all possible moves in a 10x10 grid
-        for (int x = 0; x < GridSize; x++)
-        {
-            for (int y = 0; y < GridSize; y++)
-            {
-                moves.Add(new Position(x, y));
-            }
-        }
-
-        // Randomize the list of moves
-        Random rng = new Random();
-        int n = moves.Count;
-        while (n > 1)
-        {
-            n--;
-            int k = rng.Next(n + 1);
-            Position value = moves[k];
-            moves[k] = moves[n];
-            moves[n] = value;
-        }
-
-        return moves.ToArray();
     }
 
     public List<IAHistoryModel> GetReversedHittingPositions()
@@ -196,13 +172,13 @@ public class GridService
         }
     }
 
-    public StartGameAIResponse SetupGameIA(bool playerPlacement)
+    public StartGameAIResponse SetupGameIA(bool playerPlacement, bool hardMode)
     {
         var response = new StartGameAIResponse();
-        GridModel grid1 = new (0);
-        Console.WriteLine($"Result of bool: {playerPlacement}");
-        player1 = null;
-        player2 = null;
+        ExpertIA = hardMode;
+        GridSize = hardMode ? 15 : 10;
+        GameOver = false;
+        GridModel grid1 = new (0, GridSize);
         
         if (playerPlacement)
         {
@@ -210,11 +186,9 @@ public class GridService
             player1 = new("p1", 0, grid1);
         
         
-            GridModel grid2 = new (1);
-            grid2.BoatList = GenerateBoatsPos(grid2);
-            player2 = new("p2", 1, grid2);
-        }
-        IAMovesOrder = GenerateAIMoves();
+        GridModel grid2 = new (1, GridSize);
+        grid2.BoatList = GenerateBoatsPos(grid2);
+        player2 = new("p2", 1, grid2);
 
         response.BoatList = player1.GridModel.BoatList;
         response.GameId = 0;
@@ -327,6 +301,7 @@ public class GridService
     {
         // Handle player shot
         ShootResponse response = new();
+        if (GameOver) return response;
         response.X = position.X;
         response.Y = position.Y;
         var (isHit, boat) = IsHittingShip(position, player2);
@@ -342,7 +317,11 @@ public class GridService
                 boat.IsSinked = true;
                 bool isWinning = IsWinning(player1);
                 response.PlayerWon = isWinning;
-                if (isWinning) return response;
+                if (isWinning)
+                {
+                    GameOver = true;
+                    return response;
+                }
             }
         }
         // Handle IA shot
@@ -363,7 +342,11 @@ public class GridService
                 boatIA.IsSinked = true;
                 bool isWinningIA = IsWinning(player2);
                 response.IAWon = isWinningIA;
-                if (isWinningIA) return response;
+                if (isWinningIA)
+                {
+                    GameOver = true;
+                    return response;
+                }
             }
         }
 

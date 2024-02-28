@@ -7,17 +7,17 @@
 <link rel="stylesheet" href="css/grid.css">
 
 <a href="/" class="back-btn">Menu</a>
-<!--<a href="/PlayervsIA" class="game-again-btn">New Game</a>-->
-<div class="grid-container-player" id="playerGrid">
+
+<div class="@(hardModeState ? "grid-hard-container-player" : "grid-container-player")" id="playerGrid">
     @if (model != null)
     {
-        @for (int col = 0; col < 10; col++)
+        @for (int col = 0; col < gridSize; col++)
         {
-            for (int row = 0; row < 10; row++)
+            for (int row = 0; row < gridSize; row++)
             {
                 var boat = GetBoatAtPosition(model.BoatList, col, row);
                 var isOccupied = boat != null;
-                var cellState = playerGrid[col, row]; // Assuming you have a mechanism like this in place
+                var cellState = playerGrid[col, row];
                 var clickRow=row;
                 var clickCol=col;
 
@@ -28,7 +28,7 @@
                     }
                     else if (cellState == CellState.Hit)
                     {
-                        <span class="hit-indicator">X</span> @* Example hit indicator *@
+                        <i class="fa-solid fa-fire" style="color: #ffffff;"></i>
                     }
                 </div>
             }
@@ -37,40 +37,49 @@
 </div>
 
 <label>
-    <input type="checkbox" @bind="randomPlacement" />
     Placement aléatoire
 </label>
+<input type="checkbox" @bind="randomPlacement" />
+
+<label>Hard mode</label>
+<input type="checkbox" @bind="hardMode" />
 <button @onclick="OnNewGameClick">Nouvelle partie</button>
 
 
-<div class="grid-container-ia" id="iaGrid">
-    @for (int col = 0; col < 10; col++)
+<div class="@(hardModeState ? "grid-hard-container-ia" : "grid-container-ia")" id="iaGrid">
+    @for (int col = 0; col < gridSize; col++)
     {
-        for (int row = 0; row < 10; row++)
+        for (int row = 0; row < gridSize; row++)
         {
             var clickRow = row;
             var clickCol = col;
             var cellState = opponentGrid[col, row];
-            <div class="grid-cell-ia @GetCellCssClass(cellState, false)" 
+            <div class="grid-cell-ia @GetCellCssClass(cellState, false)"
                  @onclick="() => HandleCellClick(clickCol, clickRow)">
             </div>
         }
     }
 </div>
 
-
 @code {
+    private int gridSize = 10;
     private StartGameAIResponse model;
     private ShootResponse shootModel;
     private CellState[,] opponentGrid = new CellState[10, 10];
     private CellState[,] playerGrid = new CellState[10, 10];
     private List<Boat> playerBoats = new List<Boat>();
+    
 
     private bool randomPlacement = false;
+    private bool hardMode = false;
+    private bool hardModeState = false;
+
     protected async Task OnNewGameClick()
-    {   
-        opponentGrid = new CellState[10, 10];
-        playerGrid = new CellState[10, 10];
+    {
+        gridSize = hardMode ? 15 : 10;
+        hardModeState = hardMode;
+        opponentGrid = new CellState[gridSize, gridSize];
+        playerGrid = new CellState[gridSize, gridSize];
         if (randomPlacement)
         {
             var url = $"http://localhost:5282/StartGameAI?playerPlacement={randomPlacement}";
@@ -112,7 +121,9 @@
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
 
         // Update the opponentGrid based on the shoot result
-        opponentGrid[col, row] = shootModel.Hit ? CellState.Hit : CellState.Miss;
+        var x = shootModel.X;
+        var y = shootModel.Y;
+        opponentGrid[x, y] = shootModel.Hit ? CellState.Hit : CellState.Miss;
         
         // Update the player's grid based on the AI's shoot result
         var aiCol = shootModel.IAShootPosition.X;

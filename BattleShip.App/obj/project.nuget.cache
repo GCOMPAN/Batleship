@@ -1,9 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "QTXioG2j4LnaFMpqpfO4O0SppL85zcGNXV05GBEAw1Bm7khyxqyOZUpqG3aGkWuLKpoijfSsZCicwCG0U1ck7Q==",
+  "dgSpecHash": "Wm/f1sHR7+M+NOZSmUIL3C5dHpvU9jPAs3XB9vc6crYNBSWW+YsgiM6+Z8ft6PvD/PPnNOyOdpBJ4/OG0CWkVw==",
   "success": true,
   "projectFilePath": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.App\\BattleShip.App.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\tommu\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\tommu\\.nuget\\packages\\google.protobuf\\3.25.3\\google.protobuf.3.25.3.nupkg.sha512",
+    "C:\\Users\\tommu\\.nuget\\packages\\grpc.core.api\\2.61.0\\grpc.core.api.2.61.0.nupkg.sha512",
+    "C:\\Users\\tommu\\.nuget\\packages\\grpc.net.client\\2.61.0\\grpc.net.client.2.61.0.nupkg.sha512",
+    "C:\\Users\\tommu\\.nuget\\packages\\grpc.net.client.web\\2.61.0\\grpc.net.client.web.2.61.0.nupkg.sha512",
+    "C:\\Users\\tommu\\.nuget\\packages\\grpc.net.common\\2.61.0\\grpc.net.common.2.61.0.nupkg.sha512",
+    "C:\\Users\\tommu\\.nuget\\packages\\grpc.tools\\2.62.0\\grpc.tools.2.62.0.nupkg.sha512",
     "C:\\Users\\tommu\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.1\\microsoft.aspnetcore.authorization.8.0.1.nupkg.sha512",
     "C:\\Users\\tommu\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.1\\microsoft.aspnetcore.components.8.0.1.nupkg.sha512",
     "C:\\Users\\tommu\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\8.0.1\\microsoft.aspnetcore.components.analyzers.8.0.1.nupkg.sha512",

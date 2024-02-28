@@ -9,10 +9,16 @@
     gap: 2px;
 }
 
-.grid-cell-highlight {
-    background-color: #add8e6; /* Ou toute autre couleur que vous souhaitez utiliser pour le survol */
+.grid-hard-container-player {
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    gap: 2px;
 }
-
 
 .grid-cell-player {
     height: 45px;
@@ -36,6 +42,17 @@
     gap: 2px;
 }
 
+.grid-hard-container-ia {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translate(0, -50%);
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    gap: 2px;
+}
+
 .grid-cell-ia {
     height: 60px;
     width: 60px;
@@ -44,7 +61,8 @@
 }
 
 .grid-cell-ia:hover {
-    background-color: #7c7c7c;
+    background-color: #0137fc;
+    opacity: 80%;
 }
 
 .grid-cell-occupied {
@@ -79,5 +97,5 @@
 }
 
 .grid-cell-untouched {
-    background-color: blue; /* Adjust as needed */
+    background-color:  #44A7C4; /* Adjust as needed */
 }

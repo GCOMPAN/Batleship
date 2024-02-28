@@ -6,9 +6,9 @@ public class GridModel
     public Boat[] BoatList { get; set; }
     public char [,] Grid { get; set; }
 
-    public GridModel(int id)
+    public GridModel(int id, int size)
     {
         this.Id = id;
-        this.Grid = new char[10, 10];
+        this.Grid = new char[size, size];
     }
 }

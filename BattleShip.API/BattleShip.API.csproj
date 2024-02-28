@@ -10,10 +10,15 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.61.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BattleShip.Models\Battleship.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\Solution\requests_response.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>
