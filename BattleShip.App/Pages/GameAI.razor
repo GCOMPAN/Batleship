@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="css/grid.css">
 
 <a href="/" class="back-btn">Menu</a>
-<!--<a href="/PlayervsIA" class="game-again-btn">New Game</a>-->
 
 <div class="@(hardModeState ? "grid-hard-container-player" : "grid-container-player")" id="playerGrid">
     @if (model != null)
@@ -18,7 +17,7 @@
             {
                 var boat = GetBoatAtPosition(model.BoatList, col, row);
                 var isOccupied = boat != null;
-                var cellState = playerGrid[col, row]; // Assuming you have a mechanism like this in place
+                var cellState = playerGrid[col, row];
                 var clickRow=row;
                 var clickCol=col;
 
@@ -29,7 +28,7 @@
                     }
                     else if (cellState == CellState.Hit)
                     {
-                        <span class="hit-indicator">X</span> @* Example hit indicator *@
+                        <i class="fa-solid fa-fire" style="color: #ffffff;"></i>
                     }
                 </div>
             }
@@ -55,13 +54,12 @@
             var clickRow = row;
             var clickCol = col;
             var cellState = opponentGrid[col, row];
-            <div class="grid-cell-ia @GetCellCssClass(cellState, false)" 
+            <div class="grid-cell-ia @GetCellCssClass(cellState, false)"
                  @onclick="() => HandleCellClick(clickCol, clickRow)">
             </div>
         }
     }
 </div>
-
 
 @code {
     private int gridSize = 10;
@@ -72,7 +70,7 @@
     private List<Boat> playerBoats = new List<Boat>();
     
 
-    private bool randomPlacement = true;
+    private bool randomPlacement = false;
     private bool hardMode = false;
     private bool hardModeState = false;
 
@@ -84,16 +82,26 @@
         playerGrid = new CellState[gridSize, gridSize];
         if (randomPlacement)
         {
-
-            var url = $"http://localhost:5282/StartGameAI?playerPlacement={!randomPlacement}&hardMode={hardMode}";
+            var url = $"http://localhost:5282/StartGameAI?playerPlacement={randomPlacement}";
             var response = await HttpClient.GetAsync(url);
             model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
+            // Initialize playerBoats based on the obtained model.BoatList
+            playerBoats = model.BoatList.ToList();
         }
 
-
-
-        // Initialize playerBoats based on the obtained model.BoatList
-        playerBoats = model.BoatList.ToList();
+        else
+        {
+            var boats = new Boat[]
+            {
+                new Boat('A', 1),
+                new Boat('B', 2),
+                new Boat('C', 3),
+                new Boat('D', 4),
+                new Boat('E', 4),
+                new Boat('F', 4),
+                new Boat('G', 4),
+            };
+        }
 
         // Update game grids here if necessary
 
@@ -102,7 +110,7 @@
 
     private async void HandleCellClick(int col, int row)
     {
-        Console.WriteLine($"Clicked at col: {col + 1}, row: {row + 1}");
+        Console.WriteLine($"Clicked at col: {col + 1}, row: {row + 1}"); 
         
         // Check if the cell has already been interacted with
         if (opponentGrid[col, row] != CellState.Untouched) return;
@@ -111,8 +119,7 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
-        if(shootModel.IAShootSink) Console.WriteLine(shootModel);
-        
+
         // Update the opponentGrid based on the shoot result
         var x = shootModel.X;
         var y = shootModel.Y;
@@ -122,7 +129,8 @@
         var aiCol = shootModel.IAShootPosition.X;
         var aiRow = shootModel.IAShootPosition.Y;
         playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
-        
+
+        Console.WriteLine($"Result of your shoot: {shootModel.Hit}");
         StateHasChanged();
     }
 

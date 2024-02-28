@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+message AttackRequestGRPC {
+    int32 x = 1;
+}
+
+service BattleshipService {
+    //rpc Attack(AttackRequestGRPC) returns (AttackResponseGRPC);
+}
