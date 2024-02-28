@@ -132,9 +132,6 @@
         var aiRow = shootModel.IAShootPosition.Y;
         playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
 
-        UpdateBoatState(shootModel.BoatSunk);
-        UpdateBoatState(shootModel.IaBoatSunk);
-
         StateHasChanged();
     }
 
