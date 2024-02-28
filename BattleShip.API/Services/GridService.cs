@@ -185,7 +185,7 @@ public class GridService
             grid1.BoatList = GenerateBoatsPos(grid1);
             player1 = new("p1", 0, grid1);
         
-        
+        }
         GridModel grid2 = new (1, GridSize);
         grid2.BoatList = GenerateBoatsPos(grid2);
         player2 = new("p2", 1, grid2);
