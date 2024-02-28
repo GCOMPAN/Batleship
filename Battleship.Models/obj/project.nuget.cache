@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "3SL8CmNYX0ANhrR0jhUg3ROQHb9I8kpxwl4haQptG0CY+XoDJpy1rZoDEI1BKU7jrGJGmmMtGqDCtSU6NB5TMA==",
+  "dgSpecHash": "ERw2VTUyT2Owts/jmgSKbh5Pmqn5h0xMaH9w86gSEBIzRsoZ4n1wZL2pfDQh0xI2i5abp6IEkXTf/93YqfXNpw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
-=======
-  "dgSpecHash": "fBB3Yj6AI/983h4InCETTG+KRv+n1c2lkgo4NHkhCvnxfsV8TeiyFa89/IClPqHBpQ1PNarYh7GaIgH4C1GAKQ==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
->>>>>>> 18aff4171c1879a138e384ad1c7ba31ebf9b6f67
+  "projectFilePath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

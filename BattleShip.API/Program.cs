@@ -28,8 +28,6 @@ app.MapGet("/StartGameAI", (GridService gridService, bool playerPlacement) =>
     return gridService.SetupGameIA(playerPlacement);
 });
 
-
-
 app.MapPost("/shoot", (GridService gridService, Position position)   =>
     {
         Console.WriteLine("Shooting");
