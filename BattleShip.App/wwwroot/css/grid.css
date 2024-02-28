@@ -9,6 +9,11 @@
     gap: 2px;
 }
 
+.grid-cell-highlight {
+    background-color: #add8e6; /* Ou toute autre couleur que vous souhaitez utiliser pour le survol */
+}
+
+
 .grid-cell-player {
     height: 45px;
     width: 45px;

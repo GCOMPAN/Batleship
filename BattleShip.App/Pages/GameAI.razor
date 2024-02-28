@@ -8,7 +8,6 @@
 
 <a href="/" class="back-btn">Menu</a>
 <!--<a href="/PlayervsIA" class="game-again-btn">New Game</a>-->
-
 <div class="grid-container-player" id="playerGrid">
     @if (model != null)
     {
@@ -67,24 +66,33 @@
     private CellState[,] playerGrid = new CellState[10, 10];
     private List<Boat> playerBoats = new List<Boat>();
 
-    private bool randomPlacement = true;
-
+    private bool randomPlacement = false;
     protected async Task OnNewGameClick()
     {   
         opponentGrid = new CellState[10, 10];
         playerGrid = new CellState[10, 10];
         if (randomPlacement)
         {
-
-            var url = $"http://localhost:5282/StartGameAI?playerPlacement={!randomPlacement}";
+            var url = $"http://localhost:5282/StartGameAI?playerPlacement={randomPlacement}";
             var response = await HttpClient.GetAsync(url);
             model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
+            // Initialize playerBoats based on the obtained model.BoatList
+            playerBoats = model.BoatList.ToList();
         }
 
-
-
-        // Initialize playerBoats based on the obtained model.BoatList
-        playerBoats = model.BoatList.ToList();
+        else
+        {
+            var boats = new Boat[]
+            {
+                new Boat('A', 1),
+                new Boat('B', 2),
+                new Boat('C', 3),
+                new Boat('D', 4),
+                new Boat('E', 4),
+                new Boat('F', 4),
+                new Boat('G', 4),
+            };
+        }
 
         // Update game grids here if necessary
 
@@ -93,7 +101,7 @@
 
     private async void HandleCellClick(int col, int row)
     {
-        Console.WriteLine($"Clicked at col: {col + 1}, row: {row + 1}");
+        Console.WriteLine($"Clicked at col: {col + 1}, row: {row + 1}"); 
         
         // Check if the cell has already been interacted with
         if (opponentGrid[col, row] != CellState.Untouched) return;
@@ -102,8 +110,7 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
-        if(shootModel.IAShootSink) Console.WriteLine(shootModel);
-        
+
         // Update the opponentGrid based on the shoot result
         opponentGrid[col, row] = shootModel.Hit ? CellState.Hit : CellState.Miss;
         
@@ -111,7 +118,8 @@
         var aiCol = shootModel.IAShootPosition.X;
         var aiRow = shootModel.IAShootPosition.Y;
         playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
-        
+
+        Console.WriteLine($"Result of your shoot: {shootModel.Hit}");
         StateHasChanged();
     }
 

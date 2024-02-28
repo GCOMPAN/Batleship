@@ -204,16 +204,16 @@ public class GridService
         player1 = null;
         player2 = null;
         
-        if (!playerPlacement)
+        if (playerPlacement)
         {
             grid1.BoatList = GenerateBoatsPos(grid1);
             player1 = new("p1", 0, grid1);
-        }
         
-        GridModel grid2 = new (1);
-        grid2.BoatList = GenerateBoatsPos(grid2);
-        player2 = new("p2", 1, grid2);
-
+        
+            GridModel grid2 = new (1);
+            grid2.BoatList = GenerateBoatsPos(grid2);
+            player2 = new("p2", 1, grid2);
+        }
         IAMovesOrder = GenerateAIMoves();
 
         response.BoatList = player1.GridModel.BoatList;
