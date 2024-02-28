@@ -9,11 +9,19 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BattleShip.API
 build_property.RootNamespace = BattleShip.API
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\
+=======
+build_property.ProjectDir = C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\
+>>>>>>> de2600941e5c7cbb31e7dfb8aecf6ff77a8d54c5
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+<<<<<<< HEAD
 build_property.MSBuildProjectDirectory = C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API
+=======
+build_property.MSBuildProjectDirectory = C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API
+>>>>>>> de2600941e5c7cbb31e7dfb8aecf6ff77a8d54c5
 build_property._RazorSourceGeneratorDebug = 
