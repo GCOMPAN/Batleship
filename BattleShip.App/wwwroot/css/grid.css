@@ -24,7 +24,6 @@
     height: 45px;
     width: 45px;
     background-color: rgba(255, 255, 255, 0.9);
-    /*transition: background-color 0.3s ease;*/
 }
 
 .grid-cell-player:hover {   
@@ -60,9 +59,12 @@
     transition: background-color 0.3s ease;
 }
 
-.grid-cell-ia:hover {
-    background-color: #0137fc;
-    opacity: 80%;
+.controls {
+    background-color:#f2e6bec1;
+    position: absolute;
+    top: 90%;
+    left: 30%;
+    transform: translate(-50%, 50%);
 }
 
 .grid-cell-occupied {
@@ -92,10 +94,32 @@
     background-color: red; /* or any visual representation for hits */
 }
 
+.grid-cell-hit:hover {
+    background-color: rgb(151, 0, 0);
+}
+
+.grid-cell-sunk {
+    background-color: rgb(255, 153, 0); /* or any visual representation for hits */
+}
+
+.grid-cell-sunk:hover {
+    background-color: rgb(175, 105, 0);
+}
+
 .grid-cell-miss {
     background-color: gray; /* or any visual representation for misses */
 }
 
+.grid-cell-miss:hover {
+    background-color: rgb(76, 76, 76);
+    opacity: 80%;
+}
+
 .grid-cell-untouched {
     background-color:  #44A7C4; /* Adjust as needed */
+}
+
+.grid-cell-untouched:hover {
+    background-color: #0137fc;
+    opacity: 80%;
 }

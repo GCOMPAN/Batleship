@@ -4,5 +4,6 @@ public enum CellState
 {
     Untouched,
     Hit,
-    Miss
+    Miss,
+    Sunk
 }

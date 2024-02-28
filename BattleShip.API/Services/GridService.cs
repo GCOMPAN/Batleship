@@ -230,7 +230,6 @@ public class GridService
                 positions.Add(new Position(boat.Position.X, boat.Position.Y + i));
             }
         }
-
         // Convert the list back to an array before returning
         return positions.ToArray();
     }
@@ -260,7 +259,7 @@ public class GridService
 
         foreach (var boat in oponent.GridModel.BoatList)
         {
-            if (!boat.IsSinked) return false;
+            if (!boat.IsSunk) return false;
         }
 
         return true;
@@ -313,8 +312,8 @@ public class GridService
             response.Sink = isSinking;
             if (isSinking)
             {
-                response.SunkSize = boat.Size;
-                boat.IsSinked = true;
+                response.IASunkBoat = boat;
+                boat.IsSunk = true;
                 bool isWinning = IsWinning(player1);
                 response.PlayerWon = isWinning;
                 if (isWinning)
@@ -332,14 +331,15 @@ public class GridService
         var (isHitIA, boatIA) = IsHittingShip(IAShot, player1);
         response.IAShootHit = isHitIA;
         player1.GridModel.Grid[IAShot.X, IAShot.Y] = isHitIA ? HitMarker : MissMarker;
+        bool isSinkingIA = false;
         if (isHitIA)
         {
-            bool isSinkingIA = IsBoatSunk(boatIA, player1);
+            isSinkingIA = IsBoatSunk(boatIA, player1);
             response.IAShootSink = isSinkingIA;
             if (isSinkingIA)
             {
-                response.IASunkSize = boatIA.Size;
-                boatIA.IsSinked = true;
+                response.IASunkBoat = boatIA;
+                boatIA.IsSunk = true;
                 bool isWinningIA = IsWinning(player2);
                 response.IAWon = isWinningIA;
                 if (isWinningIA)
@@ -355,7 +355,7 @@ public class GridService
             Position = response.IAShootPosition,
             IsHitting = response.IAShootHit,
             IsSinking = response.IAShootSink,
-            Size = response.IASunkSize
+            Size = isSinkingIA ? response.IASunkBoat.Size : 0
         });
         if (response.IAShootSink) ManageIAHistory();
         return response;
