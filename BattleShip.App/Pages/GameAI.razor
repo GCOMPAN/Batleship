@@ -72,7 +72,7 @@
     private List<Boat> playerBoats = new List<Boat>();
     
 
-    private bool randomPlacement = true;
+    private bool randomPlacement = false;
     private bool hardMode = false;
     private bool hardModeState = false;
 
@@ -84,21 +84,35 @@
         playerGrid = new CellState[gridSize, gridSize];
         if (randomPlacement)
         {
-
-            var url = $"http://localhost:5282/StartGameAI?playerPlacement={!randomPlacement}&hardMode={hardMode}";
+            var url = $"http://localhost:5282/StartGameAI?playerPlacement={randomPlacement}&hardMode={hardMode}";
             var response = await HttpClient.GetAsync(url);
             model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
+            // Initialize playerBoats based on the obtained model.BoatList
+            playerBoats = model.BoatList.ToList();
         }
 
-        // Initialize playerBoats based on the obtained model.BoatList
-        playerBoats = model.BoatList.ToList();
+        else
+        {
+            var boats = new Boat[]
+            {
+                new Boat('A', 1),
+                new Boat('B', 2),
+                new Boat('C', 3),
+                new Boat('D', 4),
+                new Boat('E', 4),
+                new Boat('F', 4),
+                new Boat('G', 4),
+            };
+        }
+
+        // Update game grids here if necessary
 
         StateHasChanged(); // Refresh the UI
     }
 
     private async void HandleCellClick(int col, int row)
     {
-        Console.WriteLine($"Clicked at col: {col + 1}, row: {row + 1}");
+        Console.WriteLine($"Clicked at col: {col + 1}, row: {row + 1}"); 
         
         // Check if the cell has already been interacted with
         if (opponentGrid[col, row] != CellState.Untouched) return;
@@ -107,8 +121,7 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
-        if(shootModel.IAShootSink) Console.WriteLine(shootModel);
-        
+
         // Update the opponentGrid based on the shoot result
         var x = shootModel.X;
         var y = shootModel.Y;

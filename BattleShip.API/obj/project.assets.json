@@ -1252,19 +1252,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gab\\.nuget\\packages\\": {}
+    "C:\\Users\\NDHZ8697\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
+      "projectUniqueName": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
       "projectName": "BattleShip.API",
-      "projectPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
-      "packagesPath": "C:\\Users\\Gab\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\obj\\",
+      "projectPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
+      "packagesPath": "C:\\Users\\NDHZ8697\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Gab\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\NDHZ8697\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1276,8 +1276,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
-              "projectPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj"
+            "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
+              "projectPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj"
             }
           }
         }
@@ -1327,13 +1327,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problème de lecture du fichier cache C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
