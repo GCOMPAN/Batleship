@@ -22,11 +22,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors(c=>{c.AllowAnyMethod();c.AllowAnyHeader();c.AllowAnyOrigin();});
 
-app.MapGet("/StartGameAI", (GridService gridService) =>
+app.MapGet("/StartGameAI", (GridService gridService, bool playerPlacement) =>
 {
     Console.WriteLine("Setuping game");
-    return gridService.SetupGameIA();
+    return gridService.SetupGameIA(playerPlacement);
 });
+
+
 
 app.MapPost("/shoot", (GridService gridService, Position position)   =>
     {
