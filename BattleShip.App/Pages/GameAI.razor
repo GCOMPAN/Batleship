@@ -81,7 +81,8 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
-
+        if(shootModel.IAShootSink) Console.WriteLine(shootModel);
+        
         // Update the opponentGrid based on the shoot result
         opponentGrid[col, row] = shootModel.Hit ? CellState.Hit : CellState.Miss;
         
@@ -89,8 +90,7 @@
         var aiCol = shootModel.IAShootPosition.X;
         var aiRow = shootModel.IAShootPosition.Y;
         playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
-
-        Console.WriteLine($"Result of your shoot: {shootModel.Hit}");
+        
         StateHasChanged();
     }
 
