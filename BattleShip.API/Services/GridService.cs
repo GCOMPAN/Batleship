@@ -230,7 +230,6 @@ public class GridService
                 positions.Add(new Position(boat.Position.X, boat.Position.Y + i));
             }
         }
-
         // Convert the list back to an array before returning
         return positions.ToArray();
     }
