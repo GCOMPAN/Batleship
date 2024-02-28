@@ -16,6 +16,7 @@ public class GridService
     private int IAIndexMove = 0;
     private List<IAHistoryModel> IAHistory = new List<IAHistoryModel>();
     private Random rng = new Random();
+    private bool GameOver = false;
     bool IsBoatFittingInGrid(Boat boat, GridModel grid) {
         int maxX = boat.Facing == "E" ? GridSize - boat.Size : GridSize - 1;
         int maxY = boat.Facing == "S" ? GridSize - boat.Size : GridSize - 1;
@@ -320,6 +321,7 @@ public class GridService
     {
         // Handle player shot
         ShootResponse response = new();
+        if (GameOver) return response;
         response.X = position.X;
         response.Y = position.Y;
         var (isHit, boat) = IsHittingShip(position, player2);
@@ -335,7 +337,11 @@ public class GridService
                 boat.IsSinked = true;
                 bool isWinning = IsWinning(player1);
                 response.PlayerWon = isWinning;
-                if (isWinning) return response;
+                if (isWinning)
+                {
+                    GameOver = true;
+                    return response;
+                }
             }
         }
         // Handle IA shot
@@ -356,7 +362,11 @@ public class GridService
                 boatIA.IsSinked = true;
                 bool isWinningIA = IsWinning(player2);
                 response.IAWon = isWinningIA;
-                if (isWinningIA) return response;
+                if (isWinningIA)
+                {
+                    GameOver = true;
+                    return response;
+                }
             }
         }
 
