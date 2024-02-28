@@ -8,8 +8,9 @@
     grid-template-columns: repeat(10, 1fr);
     gap: 2px;
 }
+
 .grid-hard-container-player {
-    background-color: orange;
+    background-color: black;
     position: absolute;
     top: 50%;
     left: 30%;

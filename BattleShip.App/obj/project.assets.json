@@ -2477,16 +2477,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\Gab\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\NDHZ8697\\.nuget\\packages\\": {}
->>>>>>> de2600941e5c7cbb31e7dfb8aecf6ff77a8d54c5
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.App\\BattleShip.App.csproj",
       "projectName": "BattleShip.App",
       "projectPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.App\\BattleShip.App.csproj",
@@ -2495,16 +2490,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Gab\\AppData\\Roaming\\NuGet\\NuGet.Config"
-=======
-      "projectUniqueName": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.App\\BattleShip.App.csproj",
-      "projectName": "BattleShip.App",
-      "projectPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.App\\BattleShip.App.csproj",
-      "packagesPath": "C:\\Users\\NDHZ8697\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.App\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\NDHZ8697\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> de2600941e5c7cbb31e7dfb8aecf6ff77a8d54c5
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -2516,13 +2501,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-<<<<<<< HEAD
             "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
               "projectPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj"
-=======
-            "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
-              "projectPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj"
->>>>>>> de2600941e5c7cbb31e7dfb8aecf6ff77a8d54c5
             }
           }
         }
@@ -2611,5 +2591,13 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problème de lecture du fichier cache C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.App\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
