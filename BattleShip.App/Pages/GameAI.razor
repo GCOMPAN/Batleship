@@ -18,7 +18,7 @@
             {
                 var boat = GetBoatAtPosition(model.BoatList, col, row);
                 var isOccupied = boat != null;
-                var cellState = playerGrid[col, row]; // Assuming you have a mechanism like this in place
+                var cellState = playerGrid[col, row];
                 var clickRow=row;
                 var clickCol=col;
 
@@ -29,14 +29,13 @@
                     }
                     else if (cellState == CellState.Hit)
                     {
-                        <span class="hit-indicator">X</span> @* Example hit indicator *@
+                        <i class="fa-solid fa-fire" style="color: #ffffff;"></i>
                     }
                 </div>
             }
         }
     }
 </div>
-
 
 <div class="grid-container-ia" id="iaGrid">
     @for (int col = 0; col < 10; col++)
@@ -46,13 +45,12 @@
             var clickRow = row;
             var clickCol = col;
             var cellState = opponentGrid[col, row];
-            <div class="grid-cell-ia @GetCellCssClass(cellState, false)" 
+            <div class="grid-cell-ia @GetCellCssClass(cellState, false)"
                  @onclick="() => HandleCellClick(clickCol, clickRow)">
             </div>
         }
     }
 </div>
-
 
 @code {
     private StartGameAIResponse model;
@@ -60,7 +58,6 @@
     private CellState[,] opponentGrid = new CellState[10, 10];
     private CellState[,] playerGrid = new CellState[10, 10];
     private List<Boat> playerBoats = new List<Boat>();
-
     protected override async Task OnInitializedAsync()
     {
         var response = await HttpClient.GetAsync("http://localhost:5282/StartGameAI");

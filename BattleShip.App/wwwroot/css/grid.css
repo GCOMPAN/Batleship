@@ -39,7 +39,8 @@
 }
 
 .grid-cell-ia:hover {
-    background-color: #7c7c7c;
+    background-color: #0137fc;
+    opacity: 70%;
 }
 
 .grid-cell-occupied {
@@ -74,5 +75,5 @@
 }
 
 .grid-cell-untouched {
-    background-color: blue; /* Adjust as needed */
+    background-color:  #44A7C4; /* Adjust as needed */
 }

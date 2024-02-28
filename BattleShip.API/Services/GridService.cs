@@ -2,6 +2,7 @@ using Battleship.Models;
 
 namespace BattleShip.API.Services;
 
+
 public class GridService
 {
     private const int GridSize = 10;

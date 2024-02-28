@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.25.3" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.61.0" />
+    <PackageReference Include="Grpc.Net.Client.Web" Version="2.61.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.62.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all" />
   </ItemGroup>
@@ -14,5 +22,9 @@
   <ItemGroup>
     <ProjectReference Include="..\BattleShip.Models\Battleship.Models.csproj" />
   </ItemGroup>
+
+<ItemGroup>
+  <Protobuf Include="..\Solution\requests_response.proto" GrpcServices="Server" />
+</ItemGroup>
 
 </Project>

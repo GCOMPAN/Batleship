@@ -73,3 +73,10 @@ C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.AP
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\Battleship.Models.pdb
 C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Battleship.Models.dll
 C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Battleship.Models.pdb
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\Google.Protobuf.dll
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Core.Api.dll
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Net.Client.dll
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Net.Common.dll
