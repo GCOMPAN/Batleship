@@ -9,7 +9,7 @@
 <a href="/" class="back-btn">Menu</a>
 <!--<a href="/PlayervsIA" class="game-again-btn">New Game</a>-->
 
-<div class="grid-container-player" id="playerGrid">
+<div class="@(hardModeState ? "grid-hard-container-player" : "grid-container-player")" id="playerGrid">
     @if (model != null)
     {
         @for (int col = 0; col < gridSize; col++)
@@ -47,7 +47,7 @@
 <button @onclick="OnNewGameClick">Nouvelle partie</button>
 
 
-<div class="grid-container-ia" id="iaGrid">
+<div class="@(hardModeState ? "grid-hard-container-ia" : "grid-container-ia")" id="iaGrid">
     @for (int col = 0; col < gridSize; col++)
     {
         for (int row = 0; row < gridSize; row++)
@@ -74,9 +74,12 @@
 
     private bool randomPlacement = true;
     private bool hardMode = false;
+    private bool hardModeState = false;
 
     protected async Task OnNewGameClick()
-    {   
+    {
+        gridSize = hardMode ? 15 : 10;
+        hardModeState = hardMode;
         opponentGrid = new CellState[gridSize, gridSize];
         playerGrid = new CellState[gridSize, gridSize];
         if (randomPlacement)

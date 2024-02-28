@@ -8,6 +8,16 @@
     grid-template-columns: repeat(10, 1fr);
     gap: 2px;
 }
+.grid-hard-container-player {
+    background-color: orange;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    gap: 2px;
+}
 
 .grid-cell-player {
     height: 45px;
@@ -28,6 +38,17 @@
     transform: translate(0, -50%);
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+}
+
+.grid-hard-container-ia {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translate(0, -50%);
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
     gap: 2px;
 }
 
