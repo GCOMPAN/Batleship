@@ -5,23 +5,43 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Gab\.nuget\packages\</NuGetPackageFolders>
+<<<<<<< HEAD
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\tommu\.nuget\packages\</NuGetPackageFolders>
+=======
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\NDHZ8697\.nuget\packages\</NuGetPackageFolders>
+>>>>>>> 18aff4171c1879a138e384ad1c7ba31ebf9b6f67
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.8.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.9.1</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\Gab\.nuget\packages\" />
+<<<<<<< HEAD
+    <SourceRoot Include="C:\Users\tommu\.nuget\packages\" />
+=======
+    <SourceRoot Include="C:\Users\NDHZ8697\.nuget\packages\" />
+>>>>>>> 18aff4171c1879a138e384ad1c7ba31ebf9b6f67
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)microsoft.net.sdk.webassembly.pack\8.0.1\build\Microsoft.NET.Sdk.WebAssembly.Pack.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.sdk.webassembly.pack\8.0.1\build\Microsoft.NET.Sdk.WebAssembly.Pack.props')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.net.illink.tasks\8.0.1\build\Microsoft.NET.ILLink.Tasks.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.illink.tasks\8.0.1\build\Microsoft.NET.ILLink.Tasks.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.net.sdk.webassembly.pack\8.0.2\build\Microsoft.NET.Sdk.WebAssembly.Pack.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.sdk.webassembly.pack\8.0.2\build\Microsoft.NET.Sdk.WebAssembly.Pack.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.net.illink.tasks\8.0.2\build\Microsoft.NET.ILLink.Tasks.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.illink.tasks\8.0.2\build\Microsoft.NET.ILLink.Tasks.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly\8.0.1\build\net8.0\Microsoft.AspNetCore.Components.WebAssembly.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly\8.0.1\build\net8.0\Microsoft.AspNetCore.Components.WebAssembly.props')" />
     <Import Project="$(NuGetPackageRoot)grpc.tools\2.62.0\build\Grpc.Tools.props" Condition="Exists('$(NuGetPackageRoot)grpc.tools\2.62.0\build\Grpc.Tools.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+<<<<<<< HEAD
     <PkgMicrosoft_NET_Sdk_WebAssembly_Pack Condition=" '$(PkgMicrosoft_NET_Sdk_WebAssembly_Pack)' == '' ">C:\Users\Gab\.nuget\packages\microsoft.net.sdk.webassembly.pack\8.0.1</PkgMicrosoft_NET_Sdk_WebAssembly_Pack>
     <PkgMicrosoft_NET_ILLink_Tasks Condition=" '$(PkgMicrosoft_NET_ILLink_Tasks)' == '' ">C:\Users\Gab\.nuget\packages\microsoft.net.illink.tasks\8.0.1</PkgMicrosoft_NET_ILLink_Tasks>
     <PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer Condition=" '$(PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer)' == '' ">C:\Users\Gab\.nuget\packages\microsoft.aspnetcore.components.webassembly.devserver\8.0.1</PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer>
     <PkgGrpc_Tools Condition=" '$(PkgGrpc_Tools)' == '' ">C:\Users\Gab\.nuget\packages\grpc.tools\2.62.0</PkgGrpc_Tools>
+=======
+<<<<<<< HEAD
+    <PkgMicrosoft_NET_Sdk_WebAssembly_Pack Condition=" '$(PkgMicrosoft_NET_Sdk_WebAssembly_Pack)' == '' ">C:\Users\tommu\.nuget\packages\microsoft.net.sdk.webassembly.pack\8.0.2</PkgMicrosoft_NET_Sdk_WebAssembly_Pack>
+    <PkgMicrosoft_NET_ILLink_Tasks Condition=" '$(PkgMicrosoft_NET_ILLink_Tasks)' == '' ">C:\Users\tommu\.nuget\packages\microsoft.net.illink.tasks\8.0.2</PkgMicrosoft_NET_ILLink_Tasks>
+    <PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer Condition=" '$(PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer)' == '' ">C:\Users\tommu\.nuget\packages\microsoft.aspnetcore.components.webassembly.devserver\8.0.1</PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer>
+=======
+    <PkgMicrosoft_NET_Sdk_WebAssembly_Pack Condition=" '$(PkgMicrosoft_NET_Sdk_WebAssembly_Pack)' == '' ">C:\Users\NDHZ8697\.nuget\packages\microsoft.net.sdk.webassembly.pack\8.0.1</PkgMicrosoft_NET_Sdk_WebAssembly_Pack>
+    <PkgMicrosoft_NET_ILLink_Tasks Condition=" '$(PkgMicrosoft_NET_ILLink_Tasks)' == '' ">C:\Users\NDHZ8697\.nuget\packages\microsoft.net.illink.tasks\8.0.1</PkgMicrosoft_NET_ILLink_Tasks>
+    <PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer Condition=" '$(PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer)' == '' ">C:\Users\NDHZ8697\.nuget\packages\microsoft.aspnetcore.components.webassembly.devserver\8.0.1</PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer>
+>>>>>>> 18aff4171c1879a138e384ad1c7ba31ebf9b6f67
+>>>>>>> 054f557e7e2f9ba11ad1d6e8ff0007a69b771fae
   </PropertyGroup>
 </Project>

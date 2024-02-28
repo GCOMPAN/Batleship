@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Battleship.Models
-build_property.ProjectDir = C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\
+build_property.ProjectDir = C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.Models\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

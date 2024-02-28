@@ -5,5 +5,4 @@ public class StartGameAIResponse
     public int GameId { get; set; }
     public int PlayerId { get; set; }
     public Boat[] BoatList { get; set; }
-    public Boat[] BoatList2 { get; set; }
 }
