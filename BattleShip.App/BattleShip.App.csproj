@@ -23,4 +23,8 @@
     <ProjectReference Include="..\BattleShip.Models\Battleship.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Protobuf Include="..\Solution\requests_response.proto" GrpcServices="Server" />
+  </ItemGroup>
+
 </Project>
