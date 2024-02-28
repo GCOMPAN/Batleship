@@ -72,7 +72,7 @@
     private List<Boat> playerBoats = new List<Boat>();
     
 
-    private bool randomPlacement = false;
+    private bool randomPlacement = true;
     private bool hardMode = false;
     private bool hardModeState = false;
 
@@ -132,6 +132,14 @@
         var aiRow = shootModel.IAShootPosition.Y;
         playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
 
+        if(shootModel.Sink){
+            Console.WriteLine($"Player Sink ? {shootModel.Sink}");
+            UpdateBoatState(shootModel.IASunkBoat, playerGrid);
+        }
+        else if(shootModel.IAShootSink){
+            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
+            UpdateBoatState(shootModel.SunkBoat, opponentGrid);
+        }
         StateHasChanged();
     }
 
