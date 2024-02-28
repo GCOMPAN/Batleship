@@ -82,7 +82,7 @@
         playerGrid = new CellState[gridSize, gridSize];
         if (randomPlacement)
         {
-            var url = $"http://localhost:5282/StartGameAI?playerPlacement={randomPlacement}";
+            var url = $"http://localhost:5282/StartGameAI?playerPlacement={randomPlacement}&hardMode={hardMode}";
             var response = await HttpClient.GetAsync(url);
             model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
             // Initialize playerBoats based on the obtained model.BoatList

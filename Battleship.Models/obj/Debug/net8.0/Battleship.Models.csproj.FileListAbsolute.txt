@@ -1,15 +1,3 @@
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.deps.json
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.dll
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.pdb
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.AssemblyInfoInputs.cache
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.AssemblyInfo.cs
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.csproj.CoreCompileInputs.cache
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.sourcelink.json
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.dll
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\refint\Battleship.Models.dll
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.pdb
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\ref\Battleship.Models.dll
 <<<<<<< HEAD
 =======
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.deps.json
@@ -37,3 +25,15 @@ C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.Models\obj\Debug\net8.
 C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.Models\obj\Debug\net8.0\refint\Battleship.Models.dll
 C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.pdb
 C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.Models\obj\Debug\net8.0\ref\Battleship.Models.dll
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.deps.json
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.dll
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\bin\Debug\net8.0\Battleship.Models.pdb
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.AssemblyInfoInputs.cache
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.AssemblyInfo.cs
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.csproj.CoreCompileInputs.cache
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.sourcelink.json
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.dll
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\refint\Battleship.Models.dll
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\Battleship.Models.pdb
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.Models\obj\Debug\net8.0\ref\Battleship.Models.dll
