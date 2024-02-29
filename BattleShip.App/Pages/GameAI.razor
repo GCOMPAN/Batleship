@@ -150,8 +150,7 @@
     private async void HandleCellClick(int col, int row)
     {
         StateHasChanged();
-        Console.WriteLine($"Clicked at col: {col + 1}, row: {row + 1}"); 
-        
+
         // Check if the cell has already been interacted with
         if (opponentGrid[col, row] != CellState.Untouched) return;
         
