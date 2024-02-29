@@ -39,6 +39,13 @@ C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Battle
 C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Battleship.Models.pdb
 >>>>>>> 054f557e7e2f9ba11ad1d6e8ff0007a69b771fae
 >>>>>>> 74c3da1e4ebbf62e95fb15c247436c2864796179
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Google.Protobuf.dll
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Core.Api.dll
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Net.Client.dll
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
+C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Net.Common.dll
 C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.API\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.API\bin\Debug\net8.0\appsettings.json
 C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.API\bin\Debug\net8.0\BattleShip.API.exe
@@ -82,15 +89,9 @@ C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.API\obj\Debug\net8.0\r
 C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.API\obj\Debug\net8.0\BattleShip.API.pdb
 C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.API\obj\Debug\net8.0\BattleShip.API.genruntimeconfig.cache
 C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.API\obj\Debug\net8.0\ref\BattleShip.API.dll
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Google.Protobuf.dll
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Core.Api.dll
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Net.Client.dll
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
-C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.API\bin\Debug\net8.0\Grpc.Net.Common.dll
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\appsettings.json
+C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\PlayerWins.json
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\BattleShip.API.exe
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\BattleShip.API.deps.json
 C:\Users\Gab\OneDrive - IMT MINES ALES\Bureau\Mines Ales\Batleship\BattleShip.API\bin\Debug\net8.0\BattleShip.API.runtimeconfig.json

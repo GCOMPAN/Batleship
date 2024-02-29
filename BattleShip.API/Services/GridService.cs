@@ -1,5 +1,7 @@
 using Battleship.Models;
-
+using System.IO;
+using System.Text.Json;
+using System.Collections.Generic;
 namespace BattleShip.API.Services;
 
 
@@ -70,10 +72,7 @@ public class GridService
             new Boat('D', 4),
             new Boat('E', 4),
             new Boat('F', 4),
-            new Boat('G', 4),
-            new Boat('H', 4),
-            new Boat('I', 4),
-            new Boat('J', 4),
+            new Boat('G', 5),
         };
         
         var random = new Random();
@@ -233,30 +232,30 @@ public class GridService
         return optiPositions;
     }
 
-    public StartGameAIResponse SetupGameIA(bool playerPlacement, bool hardMode)
+    public StartGameAIResponse SetupGameIA(bool playerPlacement, bool hardMode, string userName) // Add userName parameter
+{
+    var response = new StartGameAIResponse();
+    ExpertIA = hardMode;
+    GridSize = hardMode ? 15 : 10;
+    GameOver = false;
+    GridModel grid1 = new(0, GridSize);
+    
+    if (playerPlacement)
     {
-        var response = new StartGameAIResponse();
-        ExpertIA = hardMode;
-        GridSize = hardMode ? 15 : 10;
-        GameOver = false;
-        GridModel grid1 = new (0, GridSize);
-        
-        if (playerPlacement)
-        {
-            grid1.BoatList = GenerateBoatsPos(grid1);
-            player1 = new("p1", 0, grid1);
-        
-        }
-        GridModel grid2 = new (1, GridSize);
-        grid2.BoatList = GenerateBoatsPos(grid2);
-        player2 = new("p2", 1, grid2);
-
-        response.BoatList = player1.GridModel.BoatList;
-        response.GameId = 0;
-        response.PlayerId = 0;
-
-        return response;
+        grid1.BoatList = GenerateBoatsPos(grid1);
+        player1 = new(userName, 0, grid1); // Use the userName here
     }
+    Console.WriteLine(player1);
+    GridModel grid2 = new(1, GridSize);
+    grid2.BoatList = GenerateBoatsPos(grid2);
+    player2 = new("AI_Opponent", 1, grid2); // Keep AI name or adapt as needed
+
+    response.BoatList = player1.GridModel.BoatList;
+    response.GameId = 0;
+    response.PlayerId = 0;
+
+    return response;
+}
 
     public (bool isHit, Boat hitBoat) IsHittingShip(Position position, PlayerModel target)
     {
@@ -309,7 +308,7 @@ public class GridService
     public bool IsWinning(PlayerModel player)
     {
         PlayerModel oponent;
-        if (player.Name == "p1")
+        if (player.Name != "AI_Opponent")
         {
             oponent = player2;
         }
@@ -356,6 +355,43 @@ public class GridService
         }
     }
 
+private void RecordPlayerWin(string playerName)
+{
+    const string filePath = "./PlayerWins.json"; // Make sure this path is correct for your environment
+    List<LeaderboardEntry> leaderboardEntries;
+
+    // Check if the file exists and read it, otherwise initialize a new list
+    if (File.Exists(filePath))
+    {
+        string jsonString = File.ReadAllText(filePath);
+        leaderboardEntries = JsonSerializer.Deserialize<List<LeaderboardEntry>>(jsonString) ?? new List<LeaderboardEntry>();
+    }
+    else
+    {
+        leaderboardEntries = new List<LeaderboardEntry>();
+    }
+
+    // Find the player in the leaderboard
+    var playerEntry = leaderboardEntries.FirstOrDefault(entry => entry.PlayerName == playerName);
+    if (playerEntry != null)
+    {
+        // Player exists, increment their win count
+        playerEntry.Wins++;
+    }
+    else
+    {
+        // Player does not exist, add them to the leaderboard
+        leaderboardEntries.Add(new LeaderboardEntry { PlayerName = playerName, Wins = 1 });
+    }
+
+    // Sort the list by Wins in descending order
+    leaderboardEntries = leaderboardEntries.OrderByDescending(entry => entry.Wins).ToList();
+
+    // Write the updated list back to the file
+    string updatedJsonString = JsonSerializer.Serialize(leaderboardEntries, new JsonSerializerOptions { WriteIndented = true });
+    File.WriteAllText(filePath, updatedJsonString);
+}
+
 
     public ShootResponse Shoot(Position position)
     {
@@ -379,6 +415,8 @@ public class GridService
                 response.PlayerWon = isWinning;
                 if (isWinning)
                 {
+                    RecordPlayerWin(player1.Name);
+
                     GameOver = true;
                     return response;
                 }
@@ -405,6 +443,7 @@ public class GridService
                 response.IAWon = isWinningIA;
                 if (isWinningIA)
                 {
+                    RecordPlayerWin(player2.Name);
                     GameOver = true;
                     return response;
                 }

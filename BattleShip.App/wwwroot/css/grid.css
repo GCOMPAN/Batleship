@@ -26,8 +26,10 @@
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-.grid-cell-player:hover {   
-    /*background-color: #7c7c7c;*/
+.grid-hard-cell-player {
+    height: 30px;
+    width: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .grid-container-ia {
@@ -35,7 +37,7 @@
     position: absolute;
     top: 50%;
     right: 10%;
-    transform: translate(0, -50%);
+    transform: translate(10%, -50%);
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 2px;
@@ -46,7 +48,7 @@
     position: absolute;
     top: 50%;
     right: 10%;
-    transform: translate(0, -50%);
+    transform: translate(10%, -50%);
     display: grid;
     grid-template-columns: repeat(15, 1fr);
     gap: 2px;
@@ -55,6 +57,13 @@
 .grid-cell-ia {
     height: 60px;
     width: 60px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s ease;
+}
+
+.grid-hard-cell-ia {
+    height: 40px;
+    width: 40px;
     background-color: rgba(255, 255, 255, 0.9);
     transition: background-color 0.3s ease;
 }
@@ -122,4 +131,68 @@
 .grid-cell-untouched:hover {
     background-color: #0137fc;
     opacity: 80%;
+}
+
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0); /* Black w/ opacity */
+    display: flex;
+    align-items: center; /* Align the actual modal content vertically */
+    justify-content: center; /* Align the actual modal content horizontally */
+}
+
+.modal-content {
+    position: relative;
+    background-color: #d1d1d1;
+    opacity: 0.95; /* Slightly transparent background */
+    margin: auto;
+    padding: 15px; /* Increased padding for better spacing */
+    border: 3px solid #000;
+    width: 50%; /* Adjust width here */
+    max-width: 600px; /* Maximum width */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px; /* Rounded corners for modal */
+    display: flex; /* Added for centering content */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align items horizontally */
+    justify-content: center; /* Center align items vertically */
+}
+
+.close-btn {
+    color: #000;
+    position: absolute;
+    top: 15px; /* Position the close button */
+    right: 20px; /* Position the close button */
+    font-size: 30px; /* Slightly smaller for aesthetics */
+    font-weight: bold;
+    background-color: transparent; /* No background color */
+    border: none; /* Remove border */
+    border-radius: 50%; /* Circular shape */
+    padding: 0; /* Remove padding */
+    width: 40px; /* Fixed width */
+    height: 40px; /* Fixed height */
+    display: flex; /* Center the X symbol */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #222; /* Darker color on hover/focus */
+    background-color: #eee; /* Light background on hover/focus */
+    cursor: pointer;
+}
+
+/* If you want to add more styling to the text */
+.modal-content p {
+    font-size: 50px; /* Adjust text size */
+    color: #844e4e; /* Text color */
+    text-align: center; /* Center the text */
+    font-family: 'PiratesBlackbeard', sans-serif;
 }
