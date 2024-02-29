@@ -169,6 +169,15 @@
         var aiRow = shootModel.IAShootPosition.Y;
         playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
 
+        // Verify the win condition
+        if(shootModel.IAWon){
+            winner = "IA";
+        }
+        if(shootModel.PlayerWon)
+        {
+            winner = userName;
+        }
+
         // Verify if the boat Hit is Sunk and if yes, we change the state of all the boat
         if(shootModel.Sink){
             Console.WriteLine($"Player Sink ? {shootModel.Sink}");
@@ -177,15 +186,6 @@
         if(shootModel.IAShootSink){
             Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.IASunkBoat, playerGrid);
-        }
-
-        // Verify the win condition
-        if(shootModel.IAWon){
-            winner = "IA";
-        }
-        if(shootModel.PlayerWon)
-        {
-            winner = userName;
         }
         StateHasChanged();
     }
