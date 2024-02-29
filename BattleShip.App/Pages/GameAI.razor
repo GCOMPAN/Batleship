@@ -164,26 +164,21 @@
         var y = shootModel.Y;
         opponentGrid[x, y] = shootModel.Hit ? CellState.Hit : CellState.Miss;
 
-        if(shootModel.Sink){
-            Console.WriteLine($"Player Sink ? {shootModel.Sink}");
-            UpdateBoatState(shootModel.IASunkBoat, opponentGrid);
-        }
-
         // Update the player's grid based on the AI's shoot result
         var aiCol = shootModel.IAShootPosition.X;
         var aiRow = shootModel.IAShootPosition.Y;
         playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
 
         // Verify if the boat Hit is Sunk and if yes, we change the state of all the boat
+        if(shootModel.Sink){
+            Console.WriteLine($"Player Sink ? {shootModel.Sink}");
+            UpdateBoatState(shootModel.IASunkBoat, opponentGrid);
+        }
         if(shootModel.IAShootSink){
             Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.IASunkBoat, playerGrid);
         }
-        else if(shootModel.Sink){
-            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
-            UpdateBoatState(shootModel.SunkBoat, opponentGrid);
-        }
-        
+
         // Verify the win condition
         if(shootModel.IAWon){
             winner = "IA";

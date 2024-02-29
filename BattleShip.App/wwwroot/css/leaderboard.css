@@ -48,7 +48,7 @@ h1 {
 }
 
 .table-container {
-    margin-top: 10px; /* Further reduce space above the table container if necessary */
+    margin-top: 5%;
     max-height: 500px;
     overflow-y: auto;
     width: 80%;
