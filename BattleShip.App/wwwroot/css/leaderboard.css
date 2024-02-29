@@ -1,15 +1,17 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 20px 0; /* Add top padding to push content down */
     background-image: url("https://i.ibb.co/qgsn0vN/DALL-E-2024-02-07-09-05-39-extend-the-image.png");
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    color: white; /* Ensuring text is visible on the background */
-    font-family: Arial, sans-serif; /* Change as needed */
+    height: auto; /* Change from 100vh to auto if you want to extend the body based on content */
+    min-height: 100vh; /* Ensure it still covers the whole viewport minimum */
+    color: white;
+    flex-direction: column; /* Stack children vertically */
 }
+
 
 .back-btn {
     position: absolute;
@@ -20,7 +22,7 @@ body {
     font-size: 18px;
     text-decoration: none;
     color: white;
-    background-color: #3b4948;  
+    background-color: #3b4948;
     border: none;
     border-radius: 3px;
     cursor: pointer;
@@ -32,27 +34,39 @@ body {
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-top: 150px; /* Reduced space above the title */
+    margin-bottom: 10px; /* Reduce space between the title and the table */
+    color: black; /* Title color */
+    text-align: center; /* Center the title */
+    font-size: 45px; /* Increase font size for better visibility */
+    font-weight: bold; /* Make the title bolder */
+    text-transform: uppercase; /* Optional: UPPERCASE LETTERS */
+    letter-spacing: 1.5px; /* Optional: Increase letter spacing */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: Add text shadow for depth */
+    font-family: 'PiratesBlackbeard', sans-serif;
+
 }
 
 .table-container {
-    max-height: 200px; /* Set this to whatever maximum height you prefer */
-    overflow-y: auto; /* Adds a vertical scrollbar when the content exceeds the max height */
-    width: 60%; /* Adjust based on your preference, aligns with the table width */
-    margin-top: 20px;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    border-radius: 10px; /* Optional: adds rounded corners to the table container */
+    margin-top: 10px; /* Further reduce space above the table container if necessary */
+    max-height: 500px;
+    overflow-y: auto;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 20px; /* Inner spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Add shadow to the container for depth */
 }
 
 .table {
-    width: 100%; /* Table takes full width of its container */
-    border-collapse: collapse; /* Ensures there are no spaces between table cells */
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .table th, .table td {
     padding: 15px;
-    border: 1px solid #ddd; /* Light grey border */
-    color: white; /* Ensuring text is visible against the background */
+    border: 2px solid #ddd;
+    color: white;
 }
 
 .table th {
@@ -60,10 +74,34 @@ h1 {
 }
 
 .table tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.1); /* Slightly different background for even rows */
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-
 .text-danger {
-    color: #ff3860; /* Some bright color for errors */
+    color: #ff3860;
+}
+
+/* Scrollbar styles */
+.table-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Firefox */
+.table-container {
+    scrollbar-width: thin;
+    scrollbar-color: #888 rgba(0, 0, 0, 0.1);
 }
