@@ -1,10 +1,10 @@
 [
   {
-    "PlayerName": "tom",
-    "Wins": 1
+    "PlayerName": "AI_Opponent",
+    "Wins": 2
   },
   {
-    "PlayerName": "AI_Opponent",
+    "PlayerName": "tom",
     "Wins": 1
   },
   {

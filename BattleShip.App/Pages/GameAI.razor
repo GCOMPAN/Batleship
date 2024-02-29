@@ -161,10 +161,7 @@
         var y = shootModel.Y;
         opponentGrid[x, y] = shootModel.Hit ? CellState.Hit : CellState.Miss;
 
-        if(shootModel.Sink){
-            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
-            UpdateBoatState(shootModel.SunkBoat, opponentGrid);
-        }
+        Console.WriteLine($"sink ? {shootModel.Sink}");
 
         // Update the player's grid based on the AI's shoot result
         var aiCol = shootModel.IAShootPosition.X;
@@ -173,8 +170,12 @@
 
         // Verify if the boat Hit is Sunk and if yes, we change the state of all the boat
         if(shootModel.IAShootSink){
-            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.IASunkBoat, playerGrid);
+        }
+
+        if(shootModel.Sink){
+            //Console.WriteLine($"aaaaa{shootModel.SunkBoat.Position}");
+            UpdateBoatState(shootModel.SunkBoat, opponentGrid);
         }
 
         StateHasChanged();
@@ -201,6 +202,7 @@
   
         List<Position> positions = new List<Position>();
         // Add the starting position
+        Console.WriteLine($"aaaaa{boat.Position}");
         positions.Add(boat.Position);
         // Loop to add the rest of the positions based on the boat's size
         for (int i = 1; i < boat.Size; i++)
@@ -214,7 +216,7 @@
                 positions.Add(new Position(boat.Position.X, boat.Position.Y + i));
             }
         }
-        return positions.ToArray();
+        return positions.ToArray(); 
     }
 
     private string GetCellCssClass(CellState cellState, bool isOccupied)
