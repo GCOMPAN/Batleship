@@ -26,8 +26,10 @@
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-.grid-cell-player:hover {   
-    /*background-color: #7c7c7c;*/
+.grid-hard-cell-player {
+    height: 30px;
+    width: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .grid-container-ia {
@@ -55,6 +57,13 @@
 .grid-cell-ia {
     height: 60px;
     width: 60px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s ease;
+}
+
+.grid-hard-cell-ia {
+    height: 40px;
+    width: 40px;
     background-color: rgba(255, 255, 255, 0.9);
     transition: background-color 0.3s ease;
 }

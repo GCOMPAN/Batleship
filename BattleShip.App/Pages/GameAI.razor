@@ -22,7 +22,7 @@
                 var clickRow=row;
                 var clickCol=col;
 
-                <div class="grid-cell-player @(GetCellCssClass(cellState, isOccupied))" @onclick="() => HandleCellClick(clickCol, clickRow)">
+                <div class="@(hardModeState ? "grid-hard-cell-player" : "grid-cell-player") @(GetCellCssClass(cellState, isOccupied))" @onclick="() => HandleCellClick(clickCol, clickRow)">
                     @if (isOccupied && cellState == CellState.Untouched)
                     {
                         <span class="boat-name">@boat.Name</span>
@@ -64,7 +64,7 @@
             var clickCol = col;
             var cellState = opponentGrid[col, row];
 
-            <div class="grid-cell-ia @GetCellCssClass(cellState, false)"
+            <div class="@(hardModeState ? "grid-hard-cell-ia" : "grid-cell-ia") @GetCellCssClass(cellState, false)"
                  @onclick="() => HandleCellClick(clickCol, clickRow)">
                 @if (cellState == CellState.Hit)
                 {
