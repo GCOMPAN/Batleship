@@ -8,20 +8,18 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/pirates" rel="stylesheet">
 
+<a href="/" class="back-btn">Menu</a>
+
 @if (winner != "")
 {
-
     <div class="modal">
         <div class="modal-content">
             <span class="close-btn" @onclick="CloseModal">&times;</span>
-            <p>Le gagnant est : <span style="color:@(winner == "IA" ? "red" : "blue");">@winner</span></p>
+            <p>The Winner is : <span style="color:@(winner == "IA" ? "red" : "blue");">@winner</span></p>
         </div>
     </div>
 
 }
-
-
-<a href="/" class="back-btn">Menu</a>
 
 <div class="@(hardModeState ? "grid-hard-container-player" : "grid-container-player")" id="playerGrid">
     @if (model != null)
@@ -37,7 +35,7 @@
                 var clickRow=row;
                 var clickCol=col;
 
-                <div class="grid-cell-player @(GetCellCssClass(cellState, isOccupied))" @onclick="() => HandleCellClick(clickCol, clickRow)">
+                <div class="@(hardModeState ? "grid-hard-cell-player" : "grid-cell-player") @(GetCellCssClass(cellState, isOccupied))" @onclick="() => HandleCellClick(clickCol, clickRow)">
                     @if (isOccupied && cellState == CellState.Untouched)
                     {
                         <span class="boat-name">@boat.Name</span>
@@ -82,7 +80,7 @@
             var clickCol = col;
             var cellState = opponentGrid[col, row];
 
-            <div class="grid-cell-ia @GetCellCssClass(cellState, false)"
+            <div class="@(hardModeState ? "grid-hard-cell-ia" : "grid-cell-ia") @GetCellCssClass(cellState, false)"
                  @onclick="() => HandleCellClick(clickCol, clickRow)">
                 @if (cellState == CellState.Hit)
                 {
@@ -161,13 +159,6 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
-        if(shootModel.IAWon){
-            winner = "IA";
-        }
-        if(shootModel.PlayerWon)
-        {
-            winner = userName;
-        }
 
         // Update the opponentGrid based on the shoot result
         var x = shootModel.X;
@@ -184,18 +175,28 @@
         var aiRow = shootModel.IAShootPosition.Y;
         playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
 
+        // Verify if the boat Hit is Sunk and if yes, we change the state of all the boat
         if(shootModel.IAShootSink){
             Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.IASunkBoat, playerGrid);
         }
-        else if(shootModel.IAShootSink){
+        else if(shootModel.Sink){
             Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.SunkBoat, opponentGrid);
         }
         
+        // Verify the win condition
+        if(shootModel.IAWon){
+            winner = "IA";
+        }
+        if(shootModel.PlayerWon)
+        {
+            winner = userName;
+        }
         StateHasChanged();
     }
 
+    // Initialize de boats positions to draw it
     private Boat GetBoatAtPosition(IEnumerable<Boat> boats, int col, int row)
     {
         return boats.FirstOrDefault(boat => boat.IsHit(new Position(col, row)));
@@ -221,6 +222,7 @@
         }
     }
 
+    // Calculate all the case of the boat with the start case
     private Position[] GetPositions(Boat boat)
     {
         // Initialize a list to hold positions
@@ -244,7 +246,7 @@
         return positions.ToArray();
     }
 
-    // Adjusted GetCellCssClass method to correct the typo
+    // Adjusted GetCellCssClass method to correct the type
     private string GetCellCssClass(CellState cellState, bool isOccupied)
     {
         return cellState switch
@@ -259,7 +261,4 @@
     {
         winner = ""; // Clear the winner to close the modal
     }
-
-
-
 }
