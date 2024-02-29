@@ -409,7 +409,7 @@ private void RecordPlayerWin(string playerName)
             response.Sink = isSinking;
             if (isSinking)
             {
-                response.IASunkBoat = boat;
+                response.SunkBoat = boat;
                 boat.IsSunk = true;
                 bool isWinning = IsWinning(player1);
                 response.PlayerWon = isWinning;

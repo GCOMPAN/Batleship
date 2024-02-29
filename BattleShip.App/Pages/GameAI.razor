@@ -90,7 +90,6 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
-                    Console.WriteLine("sunkaaaaaaaaaaaaaaaaaaaaaaa");
                 }
             </div>
         }   
@@ -109,12 +108,15 @@
     private bool hardMode = false;
     private bool hardModeState = false;
     private string winner = "";
+    
+    // Setup API
     protected async Task OnNewGameClick()
     {
         gridSize = hardMode ? 15 : 10;
         hardModeState = hardMode;
         opponentGrid = new CellState[gridSize, gridSize];
         playerGrid = new CellState[gridSize, gridSize];
+        
         if (randomPlacement)
         {
             if(userName == "")
@@ -127,22 +129,24 @@
             // Initialize playerBoats based on the obtained model.BoatList
             playerBoats = model.BoatList.ToList();
         }
-        else
+        else // Unused feature
         {
 
         }
-        // Update game grids here if necessary
         StateHasChanged(); // Refresh the UI
-    }
+        
+    } // END Setup API
+    
+    // Shoot API
     private async void HandleCellClick(int col, int row)
     {
         StateHasChanged();
-        Console.WriteLine($"Clicked at col: {col + 1}, row: {row + 1}"); 
         
         // Check if the cell has already been interacted with
         if (opponentGrid[col, row] != CellState.Untouched) return;
         
-        var position = new Position (col, row ); // Ensure Position is correctly instantiated
+        // API call
+        var position = new Position (col, row );
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
@@ -157,30 +161,25 @@
         }
 
         // Update the opponentGrid based on the shoot result
-        var x = shootModel.X;
-        var y = shootModel.Y;
-        opponentGrid[x, y] = shootModel.Hit ? CellState.Hit : CellState.Miss;
+        opponentGrid[shootModel.X, shootModel.Y] = shootModel.Hit ? CellState.Hit : CellState.Miss;
 
         if(shootModel.Sink){
-            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
+            Console.WriteLine(shootModel.SunkBoat);
             UpdateBoatState(shootModel.SunkBoat, opponentGrid);
         }
 
         // Update the player's grid based on the AI's shoot result
-        var aiCol = shootModel.IAShootPosition.X;
-        var aiRow = shootModel.IAShootPosition.Y;
-        playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
+        playerGrid[shootModel.IAShootPosition.X, shootModel.IAShootPosition.Y] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
 
         // Verify if the boat Hit is Sunk and if yes, we change the state of all the boat
         if(shootModel.IAShootSink){
-            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.IASunkBoat, playerGrid);
         }
 
         StateHasChanged();
-    }
+    } // END Shoot API
 
-    // Initialize de boats positions to draw it
+    // Initialize boats positions to draw them
     private Boat GetBoatAtPosition(IEnumerable<Boat> boats, int col, int row)
     {
         return boats.FirstOrDefault(boat => boat.IsHit(new Position(col, row)));
@@ -194,14 +193,15 @@
         }       
     }
 
-    // Calculate all the case of the boat with the start case
+    // Calculate all the cell of the boat with the start cell
     private Position[] GetPositions(Boat boat)
     {
         // Initialize a list to hold positions
-  
         List<Position> positions = new List<Position>();
+        
         // Add the starting position
         positions.Add(boat.Position);
+        
         // Loop to add the rest of the positions based on the boat's size
         for (int i = 1; i < boat.Size; i++)
         {
