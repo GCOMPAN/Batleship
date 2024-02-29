@@ -180,11 +180,9 @@
 
         // Verify if the boat Hit is Sunk and if yes, we change the state of all the boat
         if(shootModel.Sink){
-            Console.WriteLine($"Player Sink ? {shootModel.Sink}");
-            UpdateBoatState(shootModel.IASunkBoat, opponentGrid);
+            UpdateBoatState(shootModel.SunkBoat, opponentGrid);
         }
-        if(shootModel.IAShootSink){
-            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
+        else if(shootModel.IAShootSink){
             UpdateBoatState(shootModel.IASunkBoat, playerGrid);
         }
         StateHasChanged();
