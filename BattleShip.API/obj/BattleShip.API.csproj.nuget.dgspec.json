@@ -1,35 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.API\\BattleShip.API.csproj": {}
+    "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\BattleShip.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.API\\BattleShip.API.csproj": {
+    "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\BattleShip.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
+        "projectUniqueName": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
         "projectName": "BattleShip.API",
-        "projectPath": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
-        "packagesPath": "C:\\Users\\tommu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.API\\obj\\",
+        "projectPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\BattleShip.API.csproj",
+        "packagesPath": "C:\\Users\\Gab\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tommu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Gab\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
-                "projectPath": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\Battleship.Models.csproj"
+              "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
+                "projectPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj"
               }
             }
           }
@@ -38,11 +36,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -81,28 +74,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
+    "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
+        "projectUniqueName": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
         "projectName": "Battleship.Models",
-        "projectPath": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
-        "packagesPath": "C:\\Users\\tommu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\obj\\",
+        "projectPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
+        "packagesPath": "C:\\Users\\Gab\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tommu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Gab\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -115,11 +106,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -141,7 +127,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
