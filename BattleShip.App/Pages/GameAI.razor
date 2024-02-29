@@ -175,6 +175,7 @@
         var aiRow = shootModel.IAShootPosition.Y;
         playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
 
+        // Verify if the boat Hit is Sunk and if yes, we change the state of all the boat
         if(shootModel.IAShootSink){
             Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.IASunkBoat, playerGrid);
@@ -184,6 +185,7 @@
             UpdateBoatState(shootModel.SunkBoat, opponentGrid);
         }
         
+        // Verify the win condition
         if(shootModel.IAWon){
             winner = "IA";
         }
@@ -194,6 +196,7 @@
         StateHasChanged();
     }
 
+    // Initialize de boats positions to draw it
     private Boat GetBoatAtPosition(IEnumerable<Boat> boats, int col, int row)
     {
         return boats.FirstOrDefault(boat => boat.IsHit(new Position(col, row)));
@@ -219,6 +222,7 @@
         }
     }
 
+    // Calculate all the case of the boat with the start case
     private Position[] GetPositions(Boat boat)
     {
         // Initialize a list to hold positions
