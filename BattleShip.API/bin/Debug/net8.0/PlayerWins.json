@@ -1,50 +1,14 @@
 [
   {
-    "PlayerName": "Tom",
-    "Wins": 5
-  },
-  {
     "PlayerName": "AI_Opponent",
-    "Wins": 13
-  },
-  {
-    "PlayerName": "plowy",
-    "Wins": 1
-  },
-  {
-    "PlayerName": "caca",
     "Wins": 2
   },
   {
-    "PlayerName": "prout",
-    "Wins": 1
-  },
-  {
-    "PlayerName": "lucas",
-    "Wins": 1
-  },
-  {
-    "PlayerName": "luca",
-    "Wins": 1
-  },
-  {
-    "PlayerName": "jajajajajaja",
-    "Wins": 1
-  },
-  {
-    "PlayerName": "xcvb",
-    "Wins": 1
-  },
-  {
-    "PlayerName": "TOM",
+    "PlayerName": "test",
     "Wins": 2
   },
   {
-    "PlayerName": "tom",
-    "Wins": 1
-  },
-  {
-    "PlayerName": "Plowy",
+    "PlayerName": "Tom",
     "Wins": 1
   }
 ]
