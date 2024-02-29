@@ -159,6 +159,15 @@
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
 
+        // Verify the win condition
+        if(shootModel.IAWon){
+            winner = "IA";
+        }
+        if(shootModel.PlayerWon)
+        {
+            winner = userName;
+        }
+
         // Update the opponentGrid based on the shoot result
         var x = shootModel.X;
         var y = shootModel.Y;
@@ -168,15 +177,6 @@
         var aiCol = shootModel.IAShootPosition.X;
         var aiRow = shootModel.IAShootPosition.Y;
         playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
-
-        // Verify the win condition
-        if(shootModel.IAWon){
-            winner = "IA";
-        }
-        if(shootModel.PlayerWon)
-        {
-            winner = userName;
-        }
 
         // Verify if the boat Hit is Sunk and if yes, we change the state of all the boat
         if(shootModel.Sink){
