@@ -186,7 +186,7 @@
             Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.IASunkBoat, playerGrid);
         }
-        else if(shootModel.IAShootSink){
+        else if(shootModel.Sink){
             Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.SunkBoat, opponentGrid);
         }
@@ -242,7 +242,7 @@
         return positions.ToArray();
     }
 
-    // Adjusted GetCellCssClass method to correct the typo
+    // Adjusted GetCellCssClass method to correct the type
     private string GetCellCssClass(CellState cellState, bool isOccupied)
     {
         return cellState switch
@@ -257,7 +257,4 @@
     {
         winner = ""; // Clear the winner to close the modal
     }
-
-
-
 }

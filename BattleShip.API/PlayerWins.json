@@ -45,10 +45,14 @@
   },
   {
     "PlayerName": "Plowy",
-    "Wins": 2
+    "Wins": 3
   },
   {
     "PlayerName": "ea",
+    "Wins": 1
+  },
+  {
+    "PlayerName": "aze",
     "Wins": 1
   }
 ]
