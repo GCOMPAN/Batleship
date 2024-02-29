@@ -121,7 +121,11 @@
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Alternative</AssetRole>
+<<<<<<< HEAD
       <RelatedAsset>C:\Users\tommu\Desktop\COURS\DOT_NET\Batleship\BattleShip.App\bin\Debug\net8.0\wwwroot\_framework\blazor.webassembly.js</RelatedAsset>
+=======
+      <RelatedAsset>C:\Users\NDHZ8697\RiderProjects\Batleship\BattleShip.App\bin\Debug\net8.0\wwwroot\_framework\blazor.webassembly.js</RelatedAsset>
+>>>>>>> 339262267a7ec3c8b6bd5f6a7bb7d7e1e16ef0f7
       <AssetTraitName>Content-Encoding</AssetTraitName>
       <AssetTraitValue>gzip</AssetTraitValue>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

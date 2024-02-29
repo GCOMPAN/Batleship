@@ -8,26 +8,24 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\tommu\\.nuget\\packages\\": {}
+    "C:\\Users\\NDHZ8697\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
+      "projectUniqueName": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
       "projectName": "Battleship.Models",
-      "projectPath": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
-      "packagesPath": "C:\\Users\\tommu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tommu\\Desktop\\COURS\\DOT_NET\\Batleship\\BattleShip.Models\\obj\\",
+      "projectPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\Battleship.Models.csproj",
+      "packagesPath": "C:\\Users\\NDHZ8697\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NDHZ8697\\RiderProjects\\Batleship\\BattleShip.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tommu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\NDHZ8697\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -40,11 +38,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -66,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

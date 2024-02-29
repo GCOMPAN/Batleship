@@ -150,8 +150,7 @@
     private async void HandleCellClick(int col, int row)
     {
         StateHasChanged();
-        Console.WriteLine($"Clicked at col: {col + 1}, row: {row + 1}"); 
-        
+
         // Check if the cell has already been interacted with
         if (opponentGrid[col, row] != CellState.Untouched) return;
         
@@ -159,6 +158,11 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
+<<<<<<< HEAD
+=======
+
+        // Verify the win condition
+>>>>>>> 339262267a7ec3c8b6bd5f6a7bb7d7e1e16ef0f7
         if(shootModel.IAWon){
             winner = "IA";
         }
@@ -166,30 +170,38 @@
         {
             winner = userName;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 339262267a7ec3c8b6bd5f6a7bb7d7e1e16ef0f7
         // Update the opponentGrid based on the shoot result
         var x = shootModel.X;
         var y = shootModel.Y;
         opponentGrid[x, y] = shootModel.Hit ? CellState.Hit : CellState.Miss;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 339262267a7ec3c8b6bd5f6a7bb7d7e1e16ef0f7
         // Update the player's grid based on the AI's shoot result
         var aiCol = shootModel.IAShootPosition.X;
         var aiRow = shootModel.IAShootPosition.Y;
         playerGrid[aiCol, aiRow] = shootModel.IAShootHit ? CellState.Hit : CellState.Miss;
 
         // Verify if the boat Hit is Sunk and if yes, we change the state of all the boat
-        if(shootModel.IAShootSink){
-            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
-            UpdateBoatState(shootModel.IASunkBoat, playerGrid);
-        }
-        else if(shootModel.Sink){
-            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
+        if(shootModel.Sink){
             UpdateBoatState(shootModel.SunkBoat, opponentGrid);
         }
+<<<<<<< HEAD
         
         // Verify the win condition
 
+=======
+        else if(shootModel.IAShootSink){
+            UpdateBoatState(shootModel.IASunkBoat, playerGrid);
+        }
+>>>>>>> 339262267a7ec3c8b6bd5f6a7bb7d7e1e16ef0f7
         StateHasChanged();
     }
 

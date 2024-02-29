@@ -66,10 +66,10 @@ public class GridService
     {
         var boats = new Boat[]
         {
-            new Boat('A', 2),
+            new Boat('A', 1),
             new Boat('B', 2),
             new Boat('C', 3),
-            new Boat('D', 3),
+            new Boat('D', 4),
             new Boat('E', 4),
             new Boat('F', 4),
             new Boat('G', 5),
@@ -126,6 +126,7 @@ public class GridService
     
     private bool IsValidMove(Position pos)
     {
+        if (pos.X >= GridSize || pos.Y >= GridSize || pos.X < 0 || pos.Y < 0) return false;
         return player1.GridModel.Grid[pos.X, pos.Y] != HitMarker && player1.GridModel.Grid[pos.X, pos.Y] != MissMarker;
     }
     
@@ -142,36 +143,93 @@ public class GridService
 
     public Position nextIAMove()
     {
-        // If no moves have been made, choose a random position
+        // If no previous move, choose a random position
         if (IAHistory.Count == 0)
         {
             return new Position(rng.Next(GridSize), rng.Next(GridSize));
         }
-        else
+        // Get the reversed list of hitting positions
+        var reversedHittingPositions = GetReversedHittingPositions()
+            .Where(hit => !hit.Ignore) // Filter out the hits that should be ignored
+            .ToList();
+
+        var optimalPositions = new List<Position>();
+        var adjacentPositions = new List<Position>();
+        
+        foreach (var hit in reversedHittingPositions)
         {
-            // Retrieve the reversed list of hitting positions, including only those not marked as ignored
-            var reversedHittingPositions = GetReversedHittingPositions()
-                .Where(hit => !hit.Ignore) // Filter out the hits that should be ignored
-                .ToList();
-
-            foreach (var hit in reversedHittingPositions)
-            {
-                // For each hit, get potential adjacent positions that haven't been hit or missed
-                List<Position> possibleMoves = GetAdjacentPositions(hit.Position)
-                    .Where(pos => player1.GridModel.Grid[pos.X, pos.Y] != HitMarker 
-                                  && player1.GridModel.Grid[pos.X, pos.Y] != MissMarker)
-                    .ToList();
-
-                // If there are valid adjacent positions, select one randomly
-                if (possibleMoves.Any())
+            // filter adjacentHits to keep only cells the AI already hit
+            var adjacentHits = GetAdjacentPositions(hit.Position)
+                .Where(pos =>
                 {
-                    return possibleMoves[rng.Next(possibleMoves.Count)];
+                    return reversedHittingPositions.Any(hit2 => pos.Y == hit2.Position.Y && pos.X == hit2.Position.X);
+                }).ToList();
+            if (adjacentHits.Count > 0)
+            {
+                foreach (var adjHit in adjacentHits)
+                {
+                    bool isHorizontal = adjHit.X == hit.Position.X;
+                    var newOptiPositions = GetPatternExtension(hit.Position, adjHit, isHorizontal);
+                    foreach (var optiPos in newOptiPositions)
+                    {
+                        optimalPositions.Add(optiPos);
+                    }
                 }
             }
+            // For each hit, get potential adjacent positions that haven't been hit or missed
+            List<Position> possibleMoves = GetAdjacentPositions(hit.Position)
+                .Where(pos => player1.GridModel.Grid[pos.X, pos.Y] != HitMarker 
+                              && player1.GridModel.Grid[pos.X, pos.Y] != MissMarker)
+                .ToList();
 
-            // If no valid moves are found next to any hits, or all hits are processed, select a random new position
-            return GetRandomValidPosition();
+            // If there are valid adjacent positions, select one randomly
+            if (possibleMoves.Any())
+            {
+                foreach (var pos in possibleMoves)
+                {
+                    adjacentPositions.Add(pos);
+                }
+            }
         }
+        // if any, pick a random move from the optimal positions only if Expert mode is activated
+        if (optimalPositions.Any() && ExpertIA)
+        {
+            return optimalPositions[rng.Next(optimalPositions.Count)];
+        }
+        if (adjacentPositions.Any())
+        {
+            return adjacentPositions[rng.Next(adjacentPositions.Count)];
+        }
+
+        // If no valid moves are found next to any hits, or all hits are processed, select a random new position
+        return GetRandomValidPosition();
+    }
+    
+    private List<Position> GetPatternExtension(Position hitPosition, Position adjacentHit, bool isHorizontal)
+    {
+        var optiPositions = new List<Position>();
+        // Get which hit is the first one and which is the last one
+        Position firstPosition = (hitPosition.X < adjacentHit.X || hitPosition.Y < adjacentHit.Y)
+            ? hitPosition
+            : adjacentHit;
+
+        Position lastPosition = firstPosition == hitPosition ? adjacentHit : hitPosition;
+        
+        // Attempt to extend beyond the last hit
+        Position nextPosition = isHorizontal ? new Position(lastPosition.X + 1, lastPosition.Y) : new Position(lastPosition.X, lastPosition.Y + 1);
+        if (IsValidMove(nextPosition))
+        {
+            optiPositions.Add(nextPosition);
+        }
+
+        // Attempt to extend before the first hit if extending beyond the last hit is not valid
+        Position prevPosition = isHorizontal ? new Position(firstPosition.X - 1, firstPosition.Y) : new Position(firstPosition.X, firstPosition.Y - 1);
+        if (IsValidMove(prevPosition))
+        {
+            optiPositions.Add(prevPosition);
+        }
+        
+        return optiPositions;
     }
 
     public StartGameAIResponse SetupGameIA(bool playerPlacement, bool hardMode, string userName) // Add userName parameter

@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< HEAD
     "PlayerName": "Tom",
     "Wins": 4
   },
@@ -10,5 +11,21 @@
   {
     "PlayerName": "AI_Opponent",
     "Wins": 2
+=======
+    "PlayerName": "AI_Opponent",
+    "Wins": 3
+  },
+  {
+    "PlayerName": "test",
+    "Wins": 2
+  },
+  {
+    "PlayerName": "BenAkaLeTigre",
+    "Wins": 2
+  },
+  {
+    "PlayerName": "Tom",
+    "Wins": 1
+>>>>>>> 339262267a7ec3c8b6bd5f6a7bb7d7e1e16ef0f7
   }
 ]
