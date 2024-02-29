@@ -1,3 +1,0 @@
-obj\Debug\net8.0/RequestsResponse.cs \
-obj\Debug\net8.0/RequestsResponseGrpc.cs: C:/Users/Gab/.nuget/packages/grpc.tools/2.62.0/build/native/include/google/protobuf/wrappers.proto\
- ../Solution/requests_response.proto
