@@ -1,14 +1,14 @@
 [
   {
-    "PlayerName": "AI_Opponent",
-    "Wins": 2
+    "PlayerName": "Tom",
+    "Wins": 4
   },
   {
     "PlayerName": "test",
-    "Wins": 2
+    "Wins": 3
   },
   {
-    "PlayerName": "Tom",
-    "Wins": 1
+    "PlayerName": "AI_Opponent",
+    "Wins": 2
   }
 ]
