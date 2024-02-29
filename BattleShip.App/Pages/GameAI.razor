@@ -6,20 +6,34 @@
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/grid.css">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/pirates" rel="stylesheet">
+
+@if (winner != "")
+{
+
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-btn" @onclick="CloseModal">&times;</span>
+            <p>Le gagnant est : <span style="color:@(winner == "IA" ? "red" : "blue");">@winner</span></p>
+        </div>
+    </div>
+
+}
+
 
 <a href="/" class="back-btn">Menu</a>
 <div class="@(hardModeState ? "grid-hard-container-player" : "grid-container-player")" id="playerGrid">
-    @if (!isPlacingBoats)
+    @if (model != null)
     {
         @for (int col = 0; col < gridSize; col++)
         {
             for (int row = 0; row < gridSize; row++)
             {
-                var boat = GetBoatAtPosition(playerBoats, col, row);
+                var boat = GetBoatAtPosition(model.BoatList, col, row);
                 var isOccupied = boat != null;
                 var cellState = playerGrid[col, row];
-                var clickRow = row;
-                var clickCol = col;
+                var clickRow=row;
+                var clickCol=col;
 
                 <div class="grid-cell-player @(GetCellCssClass(cellState, isOccupied))" @onclick="() => HandleCellClick(clickCol, clickRow)">
                     @if (isOccupied && cellState == CellState.Untouched)
@@ -36,36 +50,7 @@
             }
         }
     }
-    else
-    {
-        @* Boat placement UI *@
-        @for (int i = 0; i < playerBoats.Count; i++)
-        {
-            var boat = playerBoats[i];
-            <div>
-                Boat @boat.Name (@boat.Size units):
-                <select @bind="boat.Position.X">
-                    @for (int x = 0; x < gridSize; x++)
-                    {
-                        <option value="@x">@x</option>
-                    }
-                </select>
-                <select @bind="boat.Position.Y">
-                    @for (int y = 0; y < gridSize; y++)
-                    {
-                        <option value="@y">@y</option>
-                    }
-                </select>
-                <select @bind="boat.Facing">
-                    <option value="E">East</option>
-                    <option value="S">South</option>
-                </select>
-            </div>
-        }
-        <button @onclick="FinishBoatPlacement">Finish Placement</button>
-    }
 </div>
-
 <div class="controls">
     <label>Random Boat Position</label>
     <input type="checkbox" @bind="randomPlacement" />
@@ -73,12 +58,13 @@
     <label>Hard mode</label>
     <input type="checkbox" @bind="hardMode" />
 
-<<<<<<< HEAD
-=======
+    <label for="username">Username:</label> <!-- Add this line -->
+    <input type="text" id="username" @bind="userName"> <!-- Add this line -->
+
     <button @onclick="OnNewGameClick" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">New Game</button>
 </div>
 
->>>>>>> 90a1151c4afcd68d0a0c536183462b43928ee80b
+
 <div class="@(hardModeState ? "grid-hard-container-ia" : "grid-container-ia")" id="iaGrid">
     @for (int col = 0; col < gridSize; col++)
     {
@@ -87,7 +73,8 @@
             var clickRow = row;
             var clickCol = col;
             var cellState = opponentGrid[col, row];
-            <div class="grid-cell-ia @GetCellCssClass(cellState, false)" @onclick="() => HandleCellClick(clickCol, clickRow)">
+            <div class="grid-cell-ia @GetCellCssClass(cellState, false)"
+                 @onclick="() => HandleCellClick(clickCol, clickRow)">
             </div>
         }   
     }
@@ -100,48 +87,47 @@
     private CellState[,] opponentGrid = new CellState[10, 10];
     private CellState[,] playerGrid = new CellState[10, 10];
     private List<Boat> playerBoats = new List<Boat>();
-    private bool isPlacingBoats = true; // Add this line to manage boat placement
-
+    
+    private string userName;
     private bool randomPlacement = true;
     private bool hardMode = false;
     private bool hardModeState = false;
 
+    private string winner = "";
     protected async Task OnNewGameClick()
     {
         gridSize = hardMode ? 15 : 10;
         hardModeState = hardMode;
         opponentGrid = new CellState[gridSize, gridSize];
         playerGrid = new CellState[gridSize, gridSize];
-<<<<<<< HEAD
-        isPlacingBoats = true; // Let the user place the boats at the beginning
-=======
         if (randomPlacement)
         {
-            var url = $"http://localhost:5282/StartGameAI?playerPlacement={randomPlacement}&hardMode={hardMode}";
+            var url = $"http://localhost:5282/StartGameAI?playerPlacement={randomPlacement}&hardMode={hardMode}&userName={Uri.EscapeDataString(userName)}";
             var response = await HttpClient.GetAsync(url);
             model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
             // Initialize playerBoats based on the obtained model.BoatList
             playerBoats = model.BoatList.ToList();
         }
->>>>>>> 90a1151c4afcd68d0a0c536183462b43928ee80b
 
-        playerBoats = new List<Boat>
+        else
         {
-            new Boat('A', 1),
-            new Boat('B', 2),
-            new Boat('C', 3),
-            new Boat('D', 4),
-            new Boat('E', 4),
-            new Boat('F', 4),
-            new Boat('G', 4),
-        };
+            var boats = new Boat[]
+            {
+                new Boat('A', 1),
+                new Boat('B', 2),
+                new Boat('C', 3),
+                new Boat('D', 4),
+                new Boat('E', 4),
+                new Boat('F', 4),
+                new Boat('G', 4),
+            };
+        }
+
+        // Update game grids here if necessary
 
         StateHasChanged(); // Refresh the UI
     }
 
-<<<<<<< HEAD
-
-=======
     private async void HandleCellClick(int col, int row)
     {
         Console.WriteLine($"Clicked at col: {col + 1}, row: {row + 1}"); 
@@ -153,6 +139,13 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
+        if(shootModel.IAWon){
+            winner = "IA";
+        }
+        if(shootModel.PlayerWon)
+        {
+            winner = userName;
+        }
 
         // Update the opponentGrid based on the shoot result
         var x = shootModel.X;
@@ -172,9 +165,9 @@
             Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.SunkBoat, opponentGrid);
         }
+        
         StateHasChanged();
     }
->>>>>>> 90a1151c4afcd68d0a0c536183462b43928ee80b
 
     private Boat GetBoatAtPosition(IEnumerable<Boat> boats, int col, int row)
     {
@@ -235,11 +228,11 @@
             _ => isOccupied ? "grid-cell-occupied" : "grid-cell-untouched"
         };
     }
-
-    private void FinishBoatPlacement()
+    private void CloseModal()
     {
-        // Add validation to check if all boats are placed correctly
-        isPlacingBoats = false; // Stop boat placement
-        StateHasChanged(); // Update the UI to show the game grid
+        winner = ""; // Clear the winner to close the modal
     }
+
+
+
 }

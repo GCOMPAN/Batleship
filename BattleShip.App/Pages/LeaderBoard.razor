@@ -1,15 +1,65 @@
-@page "/Leaderboard"
+@page "/leaderboard"
+@inject HttpClient Http
+@using Battleship.Models
+<link rel="stylesheet" href="css/leaderboard.css">
+<a href="/" class="back-btn">Menu</a>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BattleShip Game</title>
-    <link rel="stylesheet" href="css/home.css">
-</head>
-<body>
-    <a href="/" class="back-btn">Menu</a>
-    <h1>Leader Board</h1>
-</body>
-</html>
+<h1>Leader Board</h1>
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p class="text-danger">@errorMessage</p>
+}
+
+@if (leaderboardEntries == null)
+{
+    <p>Loading leaderboard...</p>
+}
+else if (leaderboardEntries.Count == 0)
+{
+    <p>No leaderboard entries found.</p>
+}
+else
+{
+    
+    @if (leaderboardEntries != null && leaderboardEntries.Count > 0)
+    {
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Wins</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var entry in leaderboardEntries)
+                    {
+                        <tr>
+                            <td>@entry.PlayerName</td>
+                            <td>@entry.Wins</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+}
+
+@code {
+    private List<LeaderboardEntry> leaderboardEntries;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            leaderboardEntries = await Http.GetFromJsonAsync<List<LeaderboardEntry>>("http://localhost:5282/leaderboard");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error fetching leaderboard: {ex.Message}";
+        }
+    }
+}
+
