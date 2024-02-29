@@ -326,6 +326,9 @@ private void RecordPlayerWin(string playerName)
         leaderboardEntries.Add(new LeaderboardEntry { PlayerName = playerName, Wins = 1 });
     }
 
+    // Sort the list by Wins in descending order
+    leaderboardEntries = leaderboardEntries.OrderByDescending(entry => entry.Wins).ToList();
+
     // Write the updated list back to the file
     string updatedJsonString = JsonSerializer.Serialize(leaderboardEntries, new JsonSerializerOptions { WriteIndented = true });
     File.WriteAllText(filePath, updatedJsonString);
