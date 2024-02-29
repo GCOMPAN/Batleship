@@ -187,7 +187,7 @@
     private Boat GetBoatAtPosition(IEnumerable<Boat> boats, int col, int row)
     {
         return boats.FirstOrDefault(boat => boat.IsHit(new Position(col, row)));
-    }
+    } 
 
     private void UpdateBoatState(Boat boat, CellState[,] grid)
     {
