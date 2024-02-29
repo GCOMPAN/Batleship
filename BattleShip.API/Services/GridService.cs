@@ -69,7 +69,7 @@ public class GridService
             new Boat('A', 2),
             new Boat('B', 2),
             new Boat('C', 3),
-            new Boat('D', 3),
+            new Boat('D', 4),
             new Boat('E', 4),
             new Boat('F', 4),
             new Boat('G', 5),

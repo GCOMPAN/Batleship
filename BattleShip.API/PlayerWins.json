@@ -2,5 +2,13 @@
   {
     "PlayerName": "tom",
     "Wins": 1
+  },
+  {
+    "PlayerName": "AI_Opponent",
+    "Wins": 1
+  },
+  {
+    "PlayerName": "Player 1",
+    "Wins": 1
   }
 ]

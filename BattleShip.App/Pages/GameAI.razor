@@ -83,17 +83,20 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                         <path fillRule="evenodd" d="M12.963 2.286a.75.75 0 0 0-1.071-.136 9.742 9.742 0 0 0-3.539 6.176 7.547 7.547 0 0 1-1.705-1.715.75.75 0 0 0-1.152-.082A9 9 0 1 0 15.68 4.534a7.46 7.46 0 0 1-2.717-2.248ZM15.75 14.25a3.75 3.75 0 1 1-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 0 1 1.925-3.546 3.75 3.75 0 0 1 3.255 3.718Z" clipRule="evenodd" />
                     </svg>
+
                 }
                 else if (cellState == CellState.Sunk)
                 {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
+                    Console.WriteLine("sunkaaaaaaaaaaaaaaaaaaaaaaa");
                 }
             </div>
         }   
     }
 </div>
+
 @code {
     private int gridSize = 10;
     private StartGameAIResponse model;
@@ -101,8 +104,7 @@
     private CellState[,] opponentGrid = new CellState[10, 10];
     private CellState[,] playerGrid = new CellState[10, 10];
     private List<Boat> playerBoats = new List<Boat>();
-    
-    private string userName;
+    private string userName = "";
     private bool randomPlacement = true;
     private bool hardMode = false;
     private bool hardModeState = false;
@@ -115,6 +117,10 @@
         playerGrid = new CellState[gridSize, gridSize];
         if (randomPlacement)
         {
+            if(userName == "")
+            {
+                userName = "Player 1";
+            }
             var url = $"http://localhost:5282/StartGameAI?playerPlacement={randomPlacement}&hardMode={hardMode}&userName={Uri.EscapeDataString(userName)}";
             var response = await HttpClient.GetAsync(url);
             model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
@@ -123,16 +129,7 @@
         }
         else
         {
-            var boats = new Boat[]
-            {
-                new Boat('A', 1),
-                new Boat('B', 2),
-                new Boat('C', 3),
-                new Boat('D', 4),
-                new Boat('E', 4),
-                new Boat('F', 4),
-                new Boat('G', 4),
-            };
+
         }
         // Update game grids here if necessary
         StateHasChanged(); // Refresh the UI
@@ -149,7 +146,7 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
-
+        
         // Verify the win condition
         if(shootModel.IAWon){
             winner = "IA";
@@ -161,10 +158,13 @@
 
         // Update the opponentGrid based on the shoot result
         var x = shootModel.X;
-
-  
         var y = shootModel.Y;
         opponentGrid[x, y] = shootModel.Hit ? CellState.Hit : CellState.Miss;
+
+        if(shootModel.Sink){
+            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
+            UpdateBoatState(shootModel.SunkBoat, opponentGrid);
+        }
 
         // Update the player's grid based on the AI's shoot result
         var aiCol = shootModel.IAShootPosition.X;
@@ -176,10 +176,7 @@
             Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.IASunkBoat, playerGrid);
         }
-        else if(shootModel.Sink){
-            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
-            UpdateBoatState(shootModel.SunkBoat, opponentGrid);
-        }
+
         StateHasChanged();
     }
 
@@ -191,22 +188,10 @@
 
     private void UpdateBoatState(Boat boat, CellState[,] grid)
     {
-        bool isSunk = true;
         foreach (var position in GetPositions(boat))
         {
-            if (grid[position.X, position.Y] != CellState.Hit)
-            {
-                isSunk = false;
-                break;
-            }
-        }
-        if (isSunk)
-        {
-            foreach (var position in GetPositions(boat))
-            {
-                grid[position.X, position.Y] = CellState.Sunk;
-            }
-        }
+            grid[position.X, position.Y] = CellState.Sunk;
+        }       
     }
 
     // Calculate all the case of the boat with the start case
@@ -243,6 +228,7 @@
             _ => isOccupied ? "grid-cell-occupied" : "grid-cell-untouched"
         };
     }
+
     private void CloseModal()
     {
         winner = ""; // Clear the winner to close the modal
