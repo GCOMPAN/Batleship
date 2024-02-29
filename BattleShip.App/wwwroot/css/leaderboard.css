@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("https://i.ibb.co/qgsn0vN/DALL-E-2024-02-07-09-05-39-extend-the-image.png");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: white; /* Ensuring text is visible on the background */
+    font-family: Arial, sans-serif; /* Change as needed */
+}
+
+.back-btn {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    background-color: #3b4948;  
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #fe9a3e;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.table-container {
+    max-height: 200px; /* Set this to whatever maximum height you prefer */
+    overflow-y: auto; /* Adds a vertical scrollbar when the content exceeds the max height */
+    width: 60%; /* Adjust based on your preference, aligns with the table width */
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 10px; /* Optional: adds rounded corners to the table container */
+}
+
+.table {
+    width: 100%; /* Table takes full width of its container */
+    border-collapse: collapse; /* Ensures there are no spaces between table cells */
+}
+
+.table th, .table td {
+    padding: 15px;
+    border: 1px solid #ddd; /* Light grey border */
+    color: white; /* Ensuring text is visible against the background */
+}
+
+.table th {
+    background-color: #123041;
+}
+
+.table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly different background for even rows */
+}
+
+
+.text-danger {
+    color: #ff3860; /* Some bright color for errors */
+}

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UQIQEwjKyJ6JCTjSLC51TJjsD5FTDFFTX8HJeZqtyfw=",
+  "Hash": "Kd3bS2foooQz2nK2WFw1oJXmOVELGSLW1DIMDNu1SVs=",
   "Source": "BattleShip.App",
   "BasePath": "/",
   "Mode": "Root",
@@ -8128,6 +8128,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\home.css"
+    },
+    {
+      "Identity": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.App\\wwwroot\\css\\leaderboard.css",
+      "SourceId": "BattleShip.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.App\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/leaderboard.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\leaderboard.css"
     },
     {
       "Identity": "C:\\Users\\Gab\\OneDrive - IMT MINES ALES\\Bureau\\Mines Ales\\Batleship\\BattleShip.App\\wwwroot\\icon-192.png",

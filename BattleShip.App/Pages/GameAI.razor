@@ -6,10 +6,25 @@
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/grid.css">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/pirates" rel="stylesheet">
+
+@if (winner != "")
+{
+
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-btn" @onclick="CloseModal">&times;</span>
+            <p>Le gagnant est : <span style="color:@(winner == "IA" ? "red" : "blue");">@winner</span></p>
+        </div>
+    </div>
+
+}
+
 
 <a href="/" class="back-btn">Menu</a>
 
 <div class="@(hardModeState ? "grid-hard-container-player" : "grid-container-player")" id="playerGrid">
+    @if (model != null)
     @if (model != null)
     {
         @for (int col = 0; col < gridSize; col++)   
@@ -44,7 +59,6 @@
         }
     }
 </div>
-
 <div class="controls">
     <label>Random Boat Position</label>
     <input type="checkbox" @bind="randomPlacement" />
@@ -52,8 +66,12 @@
     <label>Hard mode</label>
     <input type="checkbox" @bind="hardMode" />
 
+    <label for="username">Username:</label> <!-- Add this line -->
+    <input type="text" id="username" @bind="userName"> <!-- Add this line -->
+
     <button @onclick="OnNewGameClick" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">New Game</button>
 </div>
+
 
 <div class="@(hardModeState ? "grid-hard-container-ia" : "grid-container-ia")" id="iaGrid">
     @for (int col = 0; col < gridSize; col++)
@@ -92,11 +110,12 @@
     private CellState[,] playerGrid = new CellState[10, 10];
     private List<Boat> playerBoats = new List<Boat>();
     
-
+    private string userName;
     private bool randomPlacement = true;
     private bool hardMode = false;
     private bool hardModeState = false;
 
+    private string winner = "";
     protected async Task OnNewGameClick()
     {
         gridSize = hardMode ? 15 : 10;
@@ -105,7 +124,7 @@
         playerGrid = new CellState[gridSize, gridSize];
         if (randomPlacement)
         {
-            var url = $"http://localhost:5282/StartGameAI?playerPlacement={randomPlacement}&hardMode={hardMode}";
+            var url = $"http://localhost:5282/StartGameAI?playerPlacement={randomPlacement}&hardMode={hardMode}&userName={Uri.EscapeDataString(userName)}";
             var response = await HttpClient.GetAsync(url);
             model = await response.Content.ReadFromJsonAsync<StartGameAIResponse>();
             // Initialize playerBoats based on the obtained model.BoatList
@@ -142,6 +161,13 @@
         var jsonContent = JsonContent.Create(position);
         var response = await HttpClient.PostAsync("http://localhost:5282/Shoot", jsonContent);
         shootModel = await response.Content.ReadFromJsonAsync<ShootResponse>();
+        if(shootModel.IAWon){
+            winner = "IA";
+        }
+        if(shootModel.PlayerWon)
+        {
+            winner = userName;
+        }
 
         // Update the opponentGrid based on the shoot result
         var x = shootModel.X;
@@ -162,6 +188,11 @@
             Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
             UpdateBoatState(shootModel.IASunkBoat, playerGrid);
         }
+        else if(shootModel.IAShootSink){
+            Console.WriteLine($"IA Sink ? {shootModel.IAShootSink}");
+            UpdateBoatState(shootModel.SunkBoat, opponentGrid);
+        }
+        
         StateHasChanged();
     }
 
@@ -224,5 +255,11 @@
             _ => isOccupied ? "grid-cell-occupied" : "grid-cell-untouched"
         };
     }
+    private void CloseModal()
+    {
+        winner = ""; // Clear the winner to close the modal
+    }
+
+
 
 }
