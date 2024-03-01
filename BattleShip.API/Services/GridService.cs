@@ -148,6 +148,11 @@ public class GridService
         {
             return new Position(rng.Next(GridSize), rng.Next(GridSize));
         }
+        // If easy mode, return a valid random position
+        if (!ExpertIA)
+        {
+            return GetRandomValidPosition();
+        }
         // Get the reversed list of hitting positions
         var reversedHittingPositions = GetReversedHittingPositions()
             .Where(hit => !hit.Ignore) // Filter out the hits that should be ignored
@@ -158,79 +163,78 @@ public class GridService
         
         foreach (var hit in reversedHittingPositions)
         {
-            // filter adjacentHits to keep only cells the AI already hit
-            var adjacentHits = GetAdjacentPositions(hit.Position)
-                .Where(pos =>
-                {
-                    return reversedHittingPositions.Any(hit2 => pos.Y == hit2.Position.Y && pos.X == hit2.Position.X);
-                }).ToList();
-            if (adjacentHits.Count > 0)
-            {
-                foreach (var adjHit in adjacentHits)
-                {
-                    bool isHorizontal = adjHit.X == hit.Position.X;
-                    var newOptiPositions = GetPatternExtension(hit.Position, adjHit, isHorizontal);
-                    foreach (var optiPos in newOptiPositions)
-                    {
-                        optimalPositions.Add(optiPos);
-                    }
-                }
-            }
+            // Failed attempt to improve the expert mode
+            
+            // // filter adjacentHits to keep only cells the AI already hit
+            // var adjacentHits = GetAdjacentPositions(hit.Position)
+            //     .Where(pos =>
+            //     {
+            //         return reversedHittingPositions.Any(hit2 => pos.Y == hit2.Position.Y && pos.X == hit2.Position.X);
+            //     }).ToList();
+            // if (adjacentHits.Count > 0)
+            // {
+            //     foreach (var adjHit in adjacentHits)
+            //     {
+            //         bool isHorizontal = adjHit.X == hit.Position.X;
+            //         var newOptiPositions = GetPatternExtension(hit.Position, adjHit, isHorizontal);
+            //         foreach (var optiPos in newOptiPositions)
+            //         {
+            //             optimalPositions.Add(optiPos);
+            //         }
+            //     }
+            // }
+            
             // For each hit, get potential adjacent positions that haven't been hit or missed
             List<Position> possibleMoves = GetAdjacentPositions(hit.Position)
                 .Where(pos => player1.GridModel.Grid[pos.X, pos.Y] != HitMarker 
                               && player1.GridModel.Grid[pos.X, pos.Y] != MissMarker)
                 .ToList();
 
-            // If there are valid adjacent positions, select one randomly
+            // If there are valid adjacent positions, return one of them
             if (possibleMoves.Any())
             {
-                foreach (var pos in possibleMoves)
-                {
-                    adjacentPositions.Add(pos);
-                }
+                return possibleMoves[rng.Next(possibleMoves.Count)];
             }
         }
-        // if any, pick a random move from the optimal positions only if Expert mode is activated
-        if (optimalPositions.Any() && ExpertIA)
-        {
-            return optimalPositions[rng.Next(optimalPositions.Count)];
-        }
-        if (adjacentPositions.Any())
-        {
-            return adjacentPositions[rng.Next(adjacentPositions.Count)];
-        }
+        // Failed attempt to improve the expert mode
+        
+        // // if any, pick a random move from the optimal positions only if Expert mode is activated
+        // if (optimalPositions.Any() && ExpertIA)
+        // {
+        //     return optimalPositions[rng.Next(optimalPositions.Count)];
+        // }
 
         // If no valid moves are found next to any hits, or all hits are processed, select a random new position
         return GetRandomValidPosition();
     }
     
-    private List<Position> GetPatternExtension(Position hitPosition, Position adjacentHit, bool isHorizontal)
-    {
-        var optiPositions = new List<Position>();
-        // Get which hit is the first one and which is the last one
-        Position firstPosition = (hitPosition.X < adjacentHit.X || hitPosition.Y < adjacentHit.Y)
-            ? hitPosition
-            : adjacentHit;
-
-        Position lastPosition = firstPosition == hitPosition ? adjacentHit : hitPosition;
-        
-        // Attempt to extend beyond the last hit
-        Position nextPosition = isHorizontal ? new Position(lastPosition.X + 1, lastPosition.Y) : new Position(lastPosition.X, lastPosition.Y + 1);
-        if (IsValidMove(nextPosition))
-        {
-            optiPositions.Add(nextPosition);
-        }
-
-        // Attempt to extend before the first hit if extending beyond the last hit is not valid
-        Position prevPosition = isHorizontal ? new Position(firstPosition.X - 1, firstPosition.Y) : new Position(firstPosition.X, firstPosition.Y - 1);
-        if (IsValidMove(prevPosition))
-        {
-            optiPositions.Add(prevPosition);
-        }
-        
-        return optiPositions;
-    }
+    // Failed attempt to improve the expert mode
+    // private List<Position> GetPatternExtension(Position hitPosition, Position adjacentHit, bool isHorizontal)
+    // {
+    //     var optiPositions = new List<Position>();
+    //     // Get which hit is the first one and which is the last one
+    //     Position firstPosition = (hitPosition.X < adjacentHit.X || hitPosition.Y < adjacentHit.Y)
+    //         ? hitPosition
+    //         : adjacentHit;
+    //
+    //     Position lastPosition = firstPosition == hitPosition ? adjacentHit : hitPosition;
+    //     
+    //     // Attempt to extend beyond the last hit
+    //     Position nextPosition = isHorizontal ? new Position(lastPosition.X + 1, lastPosition.Y) : new Position(lastPosition.X, lastPosition.Y + 1);
+    //     if (IsValidMove(nextPosition))
+    //     {
+    //         optiPositions.Add(nextPosition);
+    //     }
+    //
+    //     // Attempt to extend before the first hit if extending beyond the last hit is not valid
+    //     Position prevPosition = isHorizontal ? new Position(firstPosition.X - 1, firstPosition.Y) : new Position(firstPosition.X, firstPosition.Y - 1);
+    //     if (IsValidMove(prevPosition))
+    //     {
+    //         optiPositions.Add(prevPosition);
+    //     }
+    //     
+    //     return optiPositions;
+    // }
 
     public StartGameAIResponse SetupGameIA(bool playerPlacement, bool hardMode, string userName) // Add userName parameter
 {
